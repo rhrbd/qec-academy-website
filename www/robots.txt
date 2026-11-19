@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /account.html
+Allow: /
+Sitemap: https://qecacademy.com/sitemap.xml

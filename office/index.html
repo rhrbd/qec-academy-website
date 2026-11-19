@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign In | QEC Office Console</title>
+<meta name="description" content="Private QEC Office Console.">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#5b1462">
+<meta property="og:title" content="Sign In | QEC Office Console">
+<meta property="og:description" content="Private QEC Office Console.">
+<link rel="icon" type="image/png" href="assets/img/mark.png">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/portal.css">
+<script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+<script src="assets/js/qec-core.js"></script>
+<script src="assets/js/qec-api.js"></script>
+<script src="assets/js/catalog.js"></script>
+</head>
+<body class="portal" data-app="office">
+<div class="gate">
+  <section class="gate-brand">
+    <span class="g-aurora" aria-hidden="true"></span>
+    <a class="brand" href="index.html"><img src="assets/img/mark.png" alt="" width="40" height="40"><span class="brand-name">QEC <b>Academy</b></span></a>
+    <div>
+      <span class="gate-chip">Office Console</span>
+      <h1>Students, Teachers, Batches and Systems.</h1>
+      <p>For QEC office staff and management.</p>
+    </div>
+    <p class="gate-foot">Private area. Access is given by the QEC office. Every sign-in is recorded.</p>
+  </section>
+  <section class="gate-main">
+    <div>
+      <h2>Sign In</h2>
+      <p class="muted">QEC office staff only.</p>
+      <form id="gate-form" novalidate>
+        <div class="alert" role="alert" id="gate-alert"></div>
+        <div class="field" id="g-id-f"><label for="g-id">Staff ID</label><input id="g-id" inputmode="numeric" autocomplete="username" maxlength="8" aria-describedby="g-id-e"><div class="err" id="g-id-e">Write your ID. It has only numbers.</div></div>
+        <div class="field" id="g-pin-f" style="margin-top:14px"><label for="g-pin">PIN</label><div class="pw-wrap"><input id="g-pin" type="password" inputmode="numeric" autocomplete="current-password" maxlength="6" aria-describedby="g-pin-e"><button type="button" id="g-show" aria-pressed="false" aria-label="Show PIN">Show</button></div><div class="err" id="g-pin-e">Your PIN has 4 to 6 digits.</div></div>
+        <button class="btn btn-plum btn-block" type="submit" style="margin-top:20px">Sign In</button>
+      </form>
+      <p class="form-note">Forgot your PIN? Call the QEC office on 01841-233235.</p>
+      <div class="demo-box"><b>Preview Sign-In</b>Staff ID 70001, PIN 1234.</div>
+    </div>
+  </section>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var APP = "office", KEY = APP === "student" ? "qec.student" : "qec.staff." + APP;
+  if (QEC_API.current(KEY)) { location.replace("dashboard.html"); return; }
+  var id = document.getElementById("g-id"), pin = document.getElementById("g-pin"), al = document.getElementById("gate-alert");
+  var sid = QEC.param("sid"); if (sid) { id.value = sid; pin.focus(); }
+  document.getElementById("g-show").addEventListener("click", function () { var s = pin.type === "password"; pin.type = s ? "text" : "password"; this.textContent = s ? "Hide" : "Show"; this.setAttribute("aria-pressed", String(s)); });
+  function mark(f, ok, i) { document.getElementById(f).classList.toggle("invalid", !ok); i.setAttribute("aria-invalid", String(!ok)); }
+  [id, pin].forEach(function (i) { i.addEventListener("input", function () { i.value = i.value.replace(/\D/g, ""); }); });
+  document.getElementById("gate-form").addEventListener("submit", function (e) {
+    e.preventDefault(); al.classList.remove("show");
+    var a = /^\d{4,8}$/.test(id.value), b = /^\d{4,6}$/.test(pin.value);
+    mark("g-id-f", a, id); mark("g-pin-f", b, pin);
+    if (!a) { id.focus(); return; } if (!b) { pin.focus(); return; }
+    var btn = this.querySelector("button[type=submit]"); btn.disabled = true;
+    (APP === "student" ? QEC_API.studentLogin(id.value, pin.value) : QEC_API.staffLogin(APP, id.value, pin.value))
+      .then(function () { location.href = "dashboard.html"; })
+      .catch(function (er) { btn.disabled = false; al.textContent = er.message; al.classList.add("show"); pin.value = ""; pin.focus(); });
+  });
+});
+</script>
+<script src="assets/js/portal.js" defer></script>
+</body>
+</html>
