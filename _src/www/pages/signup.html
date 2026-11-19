@@ -1,0 +1,58 @@
+<!--meta title="Sign Up" desc="Create a free QEC Academy student account to apply for courses." nav="" -->
+<div class="auth">
+  <section class="auth-side">
+    <span class="aurora a1" aria-hidden="true"></span><span class="aurora a2" aria-hidden="true" style="opacity:.25"></span>
+    <p class="bn" lang="bn" style="color:var(--amber-300);font-size:22px;margin:0">শেখার ভিত্তি হোক এখানেই</p>
+    <h1>Create Your Free Student Account</h1>
+    <ol class="steps-mini">
+      <li><span><b>Sign Up</b>The student's details, once.</span></li>
+      <li><span><b>Apply for a Course</b>Choose the class, version and batch.</span></li>
+      <li><span><b>Pay and Get Confirmed</b>The office checks the payment and enrolls you.</span></li>
+      <li><span><b>Open the Student Portal</b>With your new Student ID and PIN.</span></li>
+    </ol>
+  </section>
+  <section class="auth-main">
+    <div>
+      <h2 style="font-size:32px;margin-bottom:4px">Sign Up</h2>
+      <p class="muted">Already have an account? <a href="login.html" id="to-login">Log In</a></p>
+      <p class="panel" id="course-note" hidden style="padding:12px 16px;margin:0 0 16px"></p>
+      <form id="signup-form" data-validate data-handler="signup" novalidate>
+        <div class="alert" role="alert"></div>
+        <div class="form-grid">
+          <div class="field full"><label for="s-name">Student's Full Name <span class="req">*</span></label><input id="s-name" name="name" required data-rules="name" autocomplete="off"><div class="err">Write the student's full name.</div></div>
+          <div class="field"><label for="s-guardian">Guardian's Name <span class="req">*</span></label><input id="s-guardian" name="guardian" required data-rules="name" autocomplete="name"><div class="err">Write the guardian's name.</div></div>
+          <div class="field"><label for="s-phone">Guardian's Mobile <span class="req">*</span></label><input id="s-phone" name="phone" required data-rules="phone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"><div class="err">Use an 11-digit number that starts with 01.</div><div class="hint">You log in with this number.</div></div>
+          <div class="field"><label for="s-email">Student's Gmail</label><input id="s-email" name="email" type="email" data-rules="email" autocomplete="email" placeholder="name@gmail.com"><div class="err">Check the email address.</div><div class="hint">Needed later for Google Classroom.</div></div>
+          <div class="field"><label for="s-cls">Current Class <span class="req">*</span></label><select id="s-cls" name="cls" required><option value="">Choose</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option><option value="8">Class 8 (for Class 9 in 2027)</option><option value="9">Class 9 (for Class 10 in 2027)</option></select><div class="err">Choose the current class.</div></div>
+          <div class="field full"><span class="lbl" id="s-ver-l">Version <span class="req">*</span></span>
+            <div class="seg" role="radiogroup" aria-labelledby="s-ver-l"><label><input type="radio" name="version" value="BV" required> Bangla Version</label><label><input type="radio" name="version" value="EV"> English Version</label></div>
+            <div class="err">Choose a version.</div></div>
+          <div class="field full"><label for="s-school">School</label><input id="s-school" name="school" autocomplete="off"></div>
+          <div class="field"><label for="s-pw">Password <span class="req">*</span></label><div class="pw-wrap"><input id="s-pw" name="password" type="password" required data-rules="password" autocomplete="new-password"><button type="button" aria-pressed="false" aria-label="Show password">Show</button></div><div class="err">At least 8 characters, with a letter and a number.</div></div>
+          <div class="field"><label for="s-pw2">Confirm Password <span class="req">*</span></label><input id="s-pw2" name="password2" type="password" required data-rules="same" data-same="s-pw" autocomplete="new-password"><div class="err">The two passwords do not match.</div></div>
+          <div class="field full"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:500"><input type="checkbox" name="agree" required style="width:20px;height:20px;margin-top:3px;accent-color:#5b1462"> I am the guardian, or I have the guardian's permission, and I agree to the QEC terms and privacy policy.</label><div class="err">Please confirm to continue.</div></div>
+        </div>
+        <button class="btn btn-amber btn-block" type="submit" style="margin-top:20px">Create Account</button>
+        <p class="form-note">Preview: your account is kept only on this device so the full flow can be shown. At launch it is stored securely on the QEC server.</p>
+      </form>
+    </div>
+  </section>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var cid = QEC.param("course"), shift = QEC.param("shift") || "Afternoon";
+  var c = cid && (QEC_CATALOG.courses.filter(function (x) { return x.id === cid; })[0]);
+  if (c && c.kind !== "free") {
+    var n = document.getElementById("course-note"); n.hidden = false;
+    n.innerHTML = "You are applying for <b>" + QEC.esc(c.title) + "</b>. Create your account and the application is made for you.";
+    document.getElementById("to-login").href = "login.html?course=" + encodeURIComponent(cid) + "&shift=" + encodeURIComponent(shift);
+  }
+  QEC_API.me().then(function (a) { if (a) location.replace("account.html"); });
+  QEC_FORMS.signup = function (d) {
+    return QEC_API.signup(d).then(function () {
+      if (c && c.kind !== "free") return QEC_API.requestEnrollment(c.id, { shift: shift }).then(function (e) { location.href = "account.html#" + e.id; });
+      location.href = "account.html";
+    });
+  };
+});
+</script>

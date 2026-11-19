@@ -1,0 +1,200 @@
+<!--meta title="Sales Desk" desc="QEC Academy sales desk: approve enrollments after payment, follow up leads and track admissions." layout="app" -->
+<script>if(!QEC_API.current("qec.staff.sales"))location.replace("index.html");</script>
+<div class="app">
+  <aside class="side" aria-label="Sales menu">
+    <a class="brand" href="dashboard.html"><img src="assets/img/mark.png" alt="" width="36" height="36"><span class="brand-name">QEC <b>Academy</b></span></a>
+    <div class="role">Sales Desk</div>
+    <nav>
+      <button type="button" data-view-btn="enrollments" data-title="Enrollment Requests"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>Enrollments <span class="nav-count" id="nav-count"></span></button>
+      <button type="button" data-view-btn="pipeline" data-title="Lead Pipeline"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="11" rx="1"/><rect x="17" y="4" width="4" height="7" rx="1"/></svg>Lead Pipeline</button>
+      <button type="button" data-view-btn="calls" data-title="Today's Calls"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Today's Calls</button>
+      <button type="button" data-view-btn="report" data-title="Admissions Report"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Report</button>
+    </nav>
+    <div class="side-foot"><span class="avatar">SL</span><div><b id="me-name">Sales Officer</b><span id="me-id">ID 70003</span></div><a href="index.html" data-signout="qec.staff.sales">Sign Out</a></div>
+  </aside>
+  <div class="scrim"></div>
+  <div class="main" id="main">
+    <header class="mbar">
+      <button class="side-toggle" type="button" aria-expanded="false" aria-label="Open menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a0730" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div><h1 id="view-title">Enrollment Requests</h1><div class="sub" data-today></div></div>
+      <span class="grow"></span>
+      <span class="demo-pill">Preview Data</span>
+    </header>
+    <div class="content">
+
+      <section class="view" data-view="enrollments">
+        <div class="grid-4">
+          <div class="card kpi"><span>Waiting for Payment</span><b id="c-requested">0</b><span>Applied on the website</span></div>
+          <div class="card kpi"><span>Payment to Check</span><b id="c-payment_submitted">0</b><span class="delta">Verify and enroll</span></div>
+          <div class="card kpi"><span>Enrolled</span><b id="c-enrolled">0</b><span>Portal access given</span></div>
+          <div class="card kpi"><span>Waitlist (2027)</span><b id="c-waitlist">0</b><span>Class 9 and 10</span></div>
+        </div>
+        <div class="card">
+          <h2>Applications
+            <span class="seg-tabs" role="group" aria-label="Filter by status">
+              <button type="button" aria-pressed="false" data-st="payment_submitted">Payment to Check</button>
+              <button type="button" aria-pressed="false" data-st="requested">Waiting for Payment</button>
+              <button type="button" aria-pressed="false" data-st="enrolled">Enrolled</button>
+              <button type="button" aria-pressed="false" data-st="waitlist">Waitlist</button>
+              <button type="button" aria-pressed="false" data-st="all">All</button>
+            </span>
+          </h2>
+          <div id="enr-rows" aria-live="polite"></div>
+        </div>
+        <div class="card">
+          <h2>How Approval Works</h2>
+          <ol class="howto">
+            <li>The student signs up on qecacademy.com and applies for a course.</li>
+            <li>The guardian pays by bKash, Nagad, Rocket, bank or cash, and sends the transaction ID.</li>
+            <li>You check the transaction in the merchant or bank statement, choose the batch and press <b>Verify and Enroll</b>.</li>
+            <li>The system creates the Student ID and PIN and opens the Student Portal for that student.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="view" data-view="pipeline">
+        <div class="grid-4">
+          <div class="card kpi"><span>New Leads This Week</span><b id="k-new">0</b><span class="delta">Website and Facebook</span></div>
+          <div class="card kpi"><span>Free Classes Booked</span><b id="k-demo">0</b><span>This week</span></div>
+          <div class="card kpi"><span>Admissions This Month</span><b>27</b><span class="delta">+9 vs last month</span></div>
+          <div class="card kpi"><span>Lead to Admission</span><b>31%</b><span>Last 30 days</span></div>
+        </div>
+        <div class="kanban" id="kanban" aria-live="polite"></div>
+      </section>
+      <section class="view" data-view="calls">
+        <div class="card"><h2>Call Today <small>Sorted by follow-up time</small></h2><ul class="list" id="calls"></ul></div>
+      </section>
+      <section class="view" data-view="report">
+        <div class="grid-2">
+          <div class="card">
+            <h2>Where Leads Come From <small>Last 30 days</small></h2>
+            <div class="bars"><div class="b hi"><em>64</em><i style="height:100%"></i></div><div class="b"><em>41</em><i style="height:64%"></i></div><div class="b"><em>29</em><i style="height:45%"></i></div><div class="b"><em>18</em><i style="height:28%"></i></div><div class="b"><em>11</em><i style="height:17%"></i></div></div>
+            <div class="bars-x"><span>Facebook</span><span>Medha</span><span>Website</span><span>Referral</span><span>Walk-In</span></div>
+          </div>
+          <div class="card">
+            <h2>Admissions by Class</h2>
+            <ul class="list">
+              <li><span class="x"><b>Class 4</b><div class="meter" style="margin-top:6px"><i style="width:30%"></i></div></span><span class="tag">8</span></li>
+              <li><span class="x"><b>Class 5</b><div class="meter" style="margin-top:6px"><i style="width:37%"></i></div></span><span class="tag">10</span></li>
+              <li><span class="x"><b>Class 6</b><div class="meter" style="margin-top:6px"><i style="width:33%"></i></div></span><span class="tag">9</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var esc = QEC.esc, me = QEC_API.current("qec.staff.sales") || {};
+  if (me.name) { document.getElementById("me-name").textContent = me.name; document.getElementById("me-id").textContent = "ID " + me.id; }
+  var LABEL = { requested: "Waiting for Payment", payment_submitted: "Payment to Check", enrolled: "Enrolled", rejected: "Not Approved", waitlist: "Waitlist", cancelled: "Cancelled" };
+  var TAG = { requested: "warn", payment_submitted: "", enrolled: "ok", rejected: "bad", waitlist: "", cancelled: "bad" };
+  var st = "payment_submitted";
+  function fmt(iso) { try { return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }).format(new Date(iso)); } catch (e) { return iso; } }
+  function batches(cls, ver, shift) {
+    var out = [], sh = { Afternoon: "Aft", Night: "Night", Offline: "Offline" }[shift] || "Aft";
+    ["4", "5", "6"].forEach(function (c) { ["BV", "EV"].forEach(function (v) { ["Aft", "Night", "Offline"].forEach(function (s) { out.push(c + v + "-" + s); }); }); });
+    var pref = (/^[456]$/.test(cls) ? cls : "6") + (ver || "BV") + "-" + sh;
+    return out.map(function (b) { return '<option value="' + b + '"' + (b === pref ? " selected" : "") + ">" + b.replace("-Aft", " · Afternoon").replace("-Night", " · Night").replace("-Offline", " · At the Centre").replace(/^(\d)(BV|EV)/, "Class $1 $2") + "</option>"; }).join("");
+  }
+  function counts() {
+    QEC_API.counts().then(function (c) {
+      ["requested", "payment_submitted", "enrolled", "waitlist"].forEach(function (k) { document.getElementById("c-" + k).textContent = c[k] || 0; });
+      var n = c.payment_submitted || 0, nc = document.getElementById("nav-count"); nc.textContent = n ? n : ""; nc.hidden = !n;
+    });
+  }
+  function row(e) {
+    var a = e.account || {}, c = e.course || {};
+    var pay = e.payment ? esc(e.payment.method) + " · <b>" + esc(e.payment.trx) + "</b> · ৳ " + esc(e.payment.amount) + " from " + esc(e.payment.payer) : '<span class="muted">No payment details yet</span>';
+    var actions = "";
+    if (e.status === "requested" || e.status === "payment_submitted") {
+      var cls = c.cls && /^[456]$/.test(c.cls) ? c.cls : a.cls;
+      actions = '<details class="approve"><summary class="btn btn-plum btn-sm">Verify and Enroll</summary><form class="ap-form" data-id="' + esc(e.id) + '" novalidate>' +
+        '<div class="form-grid" style="margin-top:12px">' +
+        '<div class="field"><label>Batch</label><select name="batch">' + batches(cls, e.version || a.version, e.shift) + "</select></div>" +
+        '<div class="field"><label>Received By</label><select name="method">' + ["bKash", "Nagad", "Rocket", "Bank", "Cash"].map(function (m) { return "<option" + (e.payment && e.payment.method === m ? " selected" : "") + ">" + m + "</option>"; }).join("") + "</select></div>" +
+        '<div class="field"><label>Amount Received (৳)</label><input name="amount" inputmode="numeric" value="' + esc(e.payment ? e.payment.amount : "") + '"></div>' +
+        '<div class="field"><label>Transaction ID Checked</label><input name="trx" value="' + esc(e.payment ? e.payment.trx : "") + '" placeholder="Not needed for cash"></div>' +
+        '<div class="field full"><label>Note (Optional)</label><input name="note" placeholder="e.g. Matched in bKash statement 19 Nov"></div></div>' +
+        '<p class="ap-err" role="alert"></p><div class="gap-row" style="margin-top:10px"><button class="btn btn-plum btn-sm" type="submit">Confirm Enrollment</button></div></form></details>' +
+        '<details class="approve"><summary class="btn btn-ghost btn-sm">Not Approve</summary><form class="rj-form" data-id="' + esc(e.id) + '" novalidate><div class="field" style="margin-top:12px"><label>Reason the Guardian Will See</label><input name="reason" placeholder="e.g. Transaction ID not found. Please call the office."></div><p class="ap-err" role="alert"></p><button class="btn btn-ghost btn-sm" type="submit" style="margin-top:10px">Send Decision</button></form></details>';
+    } else if (e.status === "waitlist") {
+      actions = '<details class="approve"><summary class="btn btn-ghost btn-sm">Remove From Waitlist</summary><form class="rj-form" data-id="' + esc(e.id) + '" novalidate><div class="field" style="margin-top:12px"><label>Reason</label><input name="reason" value="Removed from the waitlist by the office."></div><p class="ap-err" role="alert"></p><button class="btn btn-ghost btn-sm" type="submit" style="margin-top:10px">Confirm</button></form></details>';
+    } else if (e.status === "enrolled") {
+      actions = '<span class="cred-mini">Student ID <b>' + esc(e.studentId) + "</b> · PIN <b>" + esc(e.pin) + "</b> · " + esc(e.batch) + "</span>";
+    }
+    return '<article class="enr-row"><div class="er-main"><div class="er-who"><span class="avatar">' + esc((a.name || "?").charAt(0)) + "</span><div><b>" + esc(a.name || "Unknown") + "</b><span>Guardian " + esc(a.guardian || "") + " · " + esc(a.phone || "") + "</span></div></div>" +
+      '<div class="er-course"><b>' + esc(c.title) + "</b><span>" + esc(e.id) + " · " + esc(e.version || "") + " · " + esc(e.shift) + " · Applied " + esc(fmt(e.createdAt)) + "</span></div>" +
+      '<span class="tag ' + TAG[e.status] + '">' + LABEL[e.status] + "</span></div>" +
+      '<div class="er-pay">' + pay + (e.reason ? ' <span class="muted">· ' + esc(e.reason) + "</span>" : "") + "</div>" +
+      (actions ? '<div class="er-act">' + actions + "</div>" : "") + "</article>";
+  }
+  function render() {
+    document.querySelectorAll("[data-st]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-st") === st)); });
+    QEC_API.listEnrollments(st).then(function (list) {
+      var box = document.getElementById("enr-rows");
+      box.innerHTML = list.length ? list.map(row).join("") : '<div class="empty-p"><b>Nothing here right now.</b><br>New applications from qecacademy.com appear here as soon as a student applies.</div>';
+      box.querySelectorAll(".ap-form").forEach(function (f) {
+        f.addEventListener("submit", function (ev) {
+          ev.preventDefault();
+          var d = {}; new FormData(f).forEach(function (v, k) { d[k] = String(v).trim(); }); d.staff = me.name || "Sales";
+          var er = f.querySelector(".ap-err"); er.textContent = "";
+          var btn = f.querySelector("button"); btn.disabled = true;
+          QEC_API.verifyAndEnroll(f.getAttribute("data-id"), d).then(function (x) {
+            QEC.toast("Enrolled. Student ID " + x.studentId + ", PIN " + x.pin + ". Portal access is open.", "ok");
+            st = "enrolled"; counts(); render();
+          }, function (e2) { btn.disabled = false; er.textContent = e2.message; });
+        });
+      });
+      box.querySelectorAll(".rj-form").forEach(function (f) {
+        f.addEventListener("submit", function (ev) {
+          ev.preventDefault();
+          var er = f.querySelector(".ap-err"); er.textContent = "";
+          QEC_API.reject(f.getAttribute("data-id"), f.querySelector("[name=reason]").value).then(function () { QEC.toast("Decision sent to the guardian's account."); counts(); render(); }, function (e2) { er.textContent = e2.message; });
+        });
+      });
+    });
+  }
+  document.querySelectorAll("[data-st]").forEach(function (b) { b.addEventListener("click", function () { st = b.getAttribute("data-st"); render(); }); });
+  QEC_API.counts().then(function (c) { if (!(c.payment_submitted > 0)) st = c.requested > 0 ? "requested" : "all"; counts(); render(); });
+  window.addEventListener("storage", function () { counts(); render(); });
+
+  /* lead pipeline (sample) */
+  var STAGES = [["new", "New"], ["contacted", "Contacted"], ["demo", "Free Class Booked"], ["enrolled", "Enrolled"]];
+  var L = [
+    { n: "Guardian of Tahmid", c: "Class 5 · BV", src: "Website Form", st: "new", t: "10:30 AM" },
+    { n: "Guardian of Nusaiba", c: "Class 4 · EV", src: "Facebook Message", st: "new", t: "11:00 AM" },
+    { n: "Guardian of Rafi", c: "Class 6 · BV", src: "Medha Onneshon", st: "new", t: "12:15 PM" },
+    { n: "Guardian of Labiba", c: "Class 6 · EV", src: "Referral", st: "contacted", t: "2:00 PM" },
+    { n: "Guardian of Sami", c: "Class 5 · EV", src: "Facebook Ad", st: "contacted", t: "3:30 PM" },
+    { n: "Guardian of Ishraq", c: "Class 4 · BV", src: "Medha Onneshon", st: "demo", t: "5:00 PM" },
+    { n: "Guardian of Mahin", c: "Class 6 · BV", src: "Website Form", st: "demo", t: "6:15 PM" },
+    { n: "Guardian of Arisha", c: "Class 5 · BV", src: "Walk-In", st: "enrolled", t: "" }
+  ];
+  var kb = document.getElementById("kanban");
+  function renderK() {
+    kb.innerHTML = STAGES.map(function (s, si) {
+      var items = L.map(function (l, i) { return [l, i]; }).filter(function (p) { return p[0].st === s[0]; });
+      return '<div class="lane"><h3>' + s[1] + "<span>" + items.length + "</span></h3>" + (items.length ? items.map(function (p) {
+        var l = p[0], i = p[1];
+        var acts = (si > 0 ? '<button type="button" data-i="' + i + '" data-d="-1">Back</button>' : "") + (si < STAGES.length - 1 ? '<button type="button" data-i="' + i + '" data-d="1">Move to ' + STAGES[si + 1][1] + "</button>" : "");
+        return '<div class="lead-card"><b>' + esc(l.n) + "</b>" + esc(l.c) + '<div class="src">' + esc(l.src) + (l.t ? " · Call " + esc(l.t) : "") + '</div><div class="acts">' + acts + "</div></div>";
+      }).join("") : '<p class="muted" style="font-size:14px;margin:4px">No leads here.</p>') + "</div>";
+    }).join("");
+    document.getElementById("k-new").textContent = L.filter(function (l) { return l.st === "new"; }).length + 12;
+    document.getElementById("k-demo").textContent = L.filter(function (l) { return l.st === "demo"; }).length + 5;
+    document.getElementById("calls").innerHTML = L.filter(function (l) { return l.st !== "enrolled" && l.t; }).map(function (l) {
+      return '<li><span class="t">' + esc(l.t) + '</span><span class="x"><b>' + esc(l.n) + "</b><span>" + esc(l.c) + " · " + esc(l.src) + '</span></span><a class="btn btn-ghost btn-sm" href="#" data-demo="In the live desk this dials the guardian and logs the call.">Call</a></li>';
+    }).join("") || "<li>No calls left today.</li>";
+  }
+  kb.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-i]"); if (!b) return;
+    var l = L[+b.getAttribute("data-i")], idx = STAGES.findIndex(function (s) { return s[0] === l.st; });
+    var ni = Math.max(0, Math.min(STAGES.length - 1, idx + (+b.getAttribute("data-d"))));
+    l.st = STAGES[ni][0]; renderK(); QEC.toast(l.n + " moved to " + STAGES[ni][1] + ".");
+  });
+  document.getElementById("calls").addEventListener("click", function (e) { var a = e.target.closest("[data-demo]"); if (a) { e.preventDefault(); QEC.toast(a.getAttribute("data-demo")); } });
+  renderK();
+});
+</script>

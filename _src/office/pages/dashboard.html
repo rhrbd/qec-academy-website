@@ -1,0 +1,124 @@
+<!--meta title="Office Console" desc="QEC Academy admin console: students, batches, teachers, system health and reports." layout="app" -->
+<script>if(!QEC_API.current("qec.staff.office"))location.replace("index.html");</script>
+<div class="app">
+  <aside class="side" aria-label="Admin menu">
+    <a class="brand" href="dashboard.html"><img src="assets/img/mark.png" alt="" width="36" height="36"><span class="brand-name">QEC <b>Academy</b></span></a>
+    <div class="role">Office Console</div>
+    <nav>
+      <button type="button" data-view-btn="overview" data-title="Overview"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Overview</button>
+      <button type="button" data-view-btn="students" data-title="Students"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 4a3.5 3.5 0 0 1 0 7M21 20c0-3-1.7-5.3-4-5.9"/></svg>Students</button>
+      <button type="button" data-view-btn="teachers" data-title="Teachers"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Teachers</button>
+      <button type="button" data-view-btn="systems" data-title="Systems"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/></svg>Systems</button>
+      <a href="roadmap.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg>Platform Roadmap</a>
+    </nav>
+    <div class="side-foot"><span class="avatar">IT</span><div><b>IT Admin</b><span>ID 70001</span></div><a href="index.html" data-signout="qec.staff.office">Sign Out</a></div>
+  </aside>
+  <div class="scrim"></div>
+  <div class="main" id="main">
+    <header class="mbar">
+      <button class="side-toggle" type="button" aria-expanded="false" aria-label="Open menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a0730" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div><h1 id="view-title">Overview</h1><div class="sub" data-today></div></div>
+      <span class="grow"></span>
+      <span class="demo-pill">Sample data</span>
+    </header>
+    <div class="content">
+      <section class="view" data-view="overview">
+        <div class="grid-4">
+          <div class="card kpi"><span>Active students</span><b>240</b><span>Class 4 to 6 plus Exam Batch</span></div>
+          <div class="card kpi"><span>Batches</span><b>12</b><span>3 classes · 2 versions · 2 shifts</span></div>
+          <div class="card kpi"><span>Teachers</span><b>15</b><span>IDs 90001–90015</span></div>
+          <div class="card kpi"><span>Live classes this week</span><b>58</b><span class="delta">0 duplicate rooms</span></div>
+        </div>
+        <div class="card">
+          <h2>Website Enrollments <small>Live from the enrollment system</small></h2>
+          <div class="grid-4" id="web-enr"></div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h2>Students by Batch</h2>
+            <div class="ptbl-wrap"><table class="ptbl">
+              <thead><tr><th>Class</th><th>BV Afternoon</th><th>EV Afternoon</th><th>BV Night</th><th>EV Night</th></tr></thead>
+              <tbody>
+                <tr><td>Class 4</td><td>40</td><td>28</td><td>33</td><td>22</td></tr>
+                <tr><td>Class 5</td><td>38</td><td>31</td><td>36</td><td>24</td></tr>
+                <tr><td>Class 6</td><td>39</td><td>30</td><td>42</td><td>35</td></tr>
+              </tbody>
+            </table></div>
+            <p class="muted" style="font-size:13.5px;margin:10px 0 0">Live numbers will come from the Students tab of the Master Database.</p>
+          </div>
+          <div class="card">
+            <h2>Needs Attention</h2>
+            <div class="notice"><b>Duplicate Student IDs</b>A few IDs are used by more than one student. Fix them in the Mother Sheet.</div>
+            <div class="notice"><b>Students without Gmail</b>They cannot join Google Classroom or live classes yet.</div>
+            <div class="notice"><b>Open support tickets</b>Reply from the Support tab.</div>
+          </div>
+        </div>
+      </section>
+      <section class="view" data-view="students">
+        <div class="card">
+          <h2>Find a Student
+            <span class="gap-row"><input class="search" id="s-q" type="search" placeholder="Search by ID or name" aria-label="Search students">
+            <span class="seg-tabs" role="group" aria-label="Status"><button type="button" aria-pressed="true" data-st="all">All</button><button type="button" aria-pressed="false" data-st="Active">Active</button><button type="button" aria-pressed="false" data-st="Dropped">Dropped</button></span></span>
+          </h2>
+          <div class="ptbl-wrap"><table class="ptbl" id="s-table"><thead><tr><th>ID</th><th>Name</th><th>Batch</th><th>Gmail</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+          <p class="muted" id="s-count" aria-live="polite" style="margin:10px 0 0;font-size:14px"></p>
+        </div>
+      </section>
+      <section class="view" data-view="teachers">
+        <div class="card">
+          <h2>Teachers</h2>
+          <div class="ptbl-wrap"><table class="ptbl">
+            <thead><tr><th>ID</th><th>Subject</th><th>Batches</th><th>Classes this week</th><th>Portal</th></tr></thead>
+            <tbody>
+              <tr><td>90001</td><td>Bangla</td><td>4</td><td>8</td><td><span class="tag ok">Active</span></td></tr>
+              <tr><td>90002</td><td>English</td><td>6</td><td>11</td><td><span class="tag ok">Active</span></td></tr>
+              <tr><td>90003</td><td>Mathematics</td><td>4</td><td>9</td><td><span class="tag ok">Active</span></td></tr>
+              <tr><td>90004</td><td>Science</td><td>4</td><td>6</td><td><span class="tag ok">Active</span></td></tr>
+              <tr><td>90005</td><td>General Knowledge</td><td>6</td><td>7</td><td><span class="tag warn">PIN reset</span></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </section>
+      <section class="view" data-view="systems">
+        <div class="grid-2">
+          <div class="card">
+            <h2>Connected Systems</h2>
+            <ul class="list health">
+              <li><span class="dot"></span><span class="x"><b>[CORE] Master Database 2026</b><span>Students, teachers, Gmail, governance</span></span><span class="tag ok">Running</span></li>
+              <li><span class="dot"></span><span class="x"><b>Teacher Class Portal</b><span>Live rooms, class log, support</span></span><span class="tag ok">Running</span></li>
+              <li><span class="dot warn"></span><span class="x"><b>Google Classroom sync</b><span>6 classrooms, one per class and shift</span></span><span class="tag warn">Check sync</span></li>
+              <li><span class="dot"></span><span class="x"><b>Medha Onneshon 2026</b><span>medha.qecacademy.com</span></span><span class="tag ok">Running</span></li>
+              <li><span class="dot"></span><span class="x"><b>QEC Code Bridge</b><span>Safe code updates as programs@</span></span><span class="tag ok">Running</span></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Coming Into This Console</h2>
+            <ul class="ticks mb-0">
+              <li>Drop or activate a student by ID: Classroom and live-class access follow</li>
+              <li>Email and SMS to a batch from one screen</li>
+              <li>Fees and dues per student</li>
+              <li>Monthly report for management</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  QEC_API.counts().then(function(c){var L=[['requested','Waiting for Payment'],['payment_submitted','Payment to Check'],['enrolled','Enrolled'],['waitlist','Waitlist']];document.getElementById('web-enr').innerHTML=L.map(function(x){return '<div class="kpi"><span>'+x[1]+'</span><b>'+(c[x[0]]||0)+'</b></div>';}).join('');});
+  var S=[["50401","Student A","4BV-Aft","Yes","Active"],["50405","Student C","4BV-Aft","Yes","Dropped"],["50412","Ayaan Rahman","5BV-Aft","Yes","Active"],["50417","Student E","5EV-Aft","No","Active"],["50502","Student G","5BV-Night","Yes","Active"],["50610","Student H","6EV-Night","Yes","Paused"],["50622","Student J","6BV-Night","Yes","Active"],["80516","Student K","4EV-Night","No","Active"]];
+  var st='all', q=document.getElementById('s-q'), tb=document.querySelector('#s-table tbody');
+  function tag(s){return '<span class="tag '+(s==='Active'?'ok':s==='Dropped'?'bad':'warn')+'">'+s+'</span>';}
+  function render(){
+    var term=q.value.trim().toLowerCase();
+    var rows=S.filter(function(r){return (st==='all'||r[4]===st)&&(!term||r[0].indexOf(term)>=0||r[1].toLowerCase().indexOf(term)>=0);});
+    tb.innerHTML=rows.length?rows.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+(r[3]==='Yes'?'Linked':'<span class="tag warn">Missing</span>')+'</td><td>'+tag(r[4])+'</td></tr>';}).join(''):'<tr><td colspan="5" class="muted">No student matches. Check the ID or try part of the name.</td></tr>';
+    document.getElementById('s-count').textContent=rows.length+' of '+S.length+' sample students';
+  }
+  q.addEventListener('input',render);
+  document.querySelectorAll('[data-st]').forEach(function(b){b.addEventListener('click',function(){st=b.getAttribute('data-st');document.querySelectorAll('[data-st]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});render();});});
+  render();
+})();
+</script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QEC Academy Platform Preview</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="www/assets/img/mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="www/assets/css/site.css">
+<script>document.documentElement.className="js";</script>
+<script src="www/assets/js/qec-core.js"></script>
+<script src="www/assets/js/qec-api.js"></script>
+<script src="www/assets/js/catalog.js"></script>
+<style>
+  .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .hub-card{position:relative;display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--line);border-radius:var(--r-l);padding:22px;text-decoration:none;color:var(--ink);box-shadow:var(--sh-1);transition:transform .3s var(--ease),box-shadow .3s}
+  .hub-card:hover{transform:translateY(-5px);box-shadow:var(--sh-2);color:var(--ink)}
+  .hub-card.main{grid-column:span 3;flex-direction:row;align-items:center;justify-content:space-between;background:linear-gradient(120deg,#2a0730,#5b1462);color:#e9dbec;border:0}
+  .hub-card.main h2{color:#fff;margin:0}
+  .hub-card h3{margin:0;font-size:22px}
+  .hub-card .host{font:600 14px/1 var(--f-body);color:var(--plum)}
+  .hub-card.main .host{color:var(--amber-300)}
+  .hub-card .cred{display:block;font-size:14px;background:var(--amber-100);color:var(--amber-ink);border-radius:10px;padding:8px 12px;margin-top:auto}
+  .lock{position:absolute;right:18px;top:18px;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--bad-50);color:var(--bad)}
+  .demo-steps{counter-reset:d;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+  .demo-steps li{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .demo-steps li::before{counter-increment:d;content:counter(d);flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--plum);color:#fff;font:800 16px/1 var(--f-display)}
+  @media (max-width:900px){.hub-grid{grid-template-columns:1fr}.hub-card.main{grid-column:auto;flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body data-app="hub">
+<section class="hero" style="padding-bottom:70px">
+  <span class="aurora a1" aria-hidden="true"></span><span class="aurora a2" aria-hidden="true"></span>
+  <div class="wrap">
+    <p class="hero-tag bn" lang="bn">শেখার ভিত্তি হোক এখানেই</p>
+    <h1 style="max-width:16ch">QEC Academy Platform Preview</h1>
+    <p class="lead">One public website and four private portals, with the full enrollment flow working: sign up, apply, pay, sales approval and Student Portal access. Prepared for management review, {{year}}.</p>
+  </div>
+</section>
+<section class="section" style="padding-top:44px">
+  <div class="wrap">
+    <div class="hub-grid">
+      <a class="hub-card main" href="www/index.html"><div><span class="host">qecacademy.com · Public</span><h2>Open the Public Website</h2><p class="mb-0" style="color:#d9c6dd">Courses, Skill Hub, books, Medha Onneshon, sign up and My Account.</p></div><span class="btn btn-amber">Open Website <span class="ar" aria-hidden="true">›</span></span></a>
+      <a class="hub-card" href="student/index.html"><span class="lock">Private</span><span class="host">student.qecacademy.com</span><h3>Student Portal</h3><p class="muted mb-0">Enrolled students and guardians: classes, routine, results.</p><span class="cred">Sample: ID 50412 · PIN 123456, or the ID and PIN from your own test enrollment</span></a>
+      <a class="hub-card" href="sales/index.html"><span class="lock">Private</span><span class="host">sales.qecacademy.com</span><h3>Sales Desk</h3><p class="muted mb-0">Verify payments, enroll students, follow up leads.</p><span class="cred">Staff ID 70003 · PIN 1234</span></a>
+      <a class="hub-card" href="teacher/index.html"><span class="lock">Private</span><span class="host">teacher.qecacademy.com</span><h3>Teacher Portal</h3><p class="muted mb-0">Open classes, attendance, marks and logs.</p><span class="cred">Teacher ID 90003 · PIN 1234</span></a>
+      <a class="hub-card" href="office/index.html"><span class="lock">Private</span><span class="host">office.qecacademy.com</span><h3>Office Console</h3><p class="muted mb-0">Students, teachers, systems and the platform roadmap.</p><span class="cred">Staff ID 70001 · PIN 1234</span></a>
+      <div class="hub-card" style="cursor:default"><span class="host">Preview Tools</span><h3>Start Fresh</h3><p class="muted">Clears the test accounts and applications made on this device.</p><button class="btn btn-ghost btn-sm" type="button" id="reset" style="align-self:flex-start">Clear Preview Data</button></div>
+    </div>
+  </div>
+</section>
+<section class="section section-tint">
+  <div class="wrap split">
+    <div><h2>Try the Enrollment Flow in Two Minutes</h2><p class="lead">Everything except the payment itself is automatic. The sales team confirms the payment by hand.</p></div>
+    <ol class="demo-steps">
+      <li><span>On the <a href="www/courses.html">website</a>, open a course and press <b>Apply Now</b>, then create an account.</span></li>
+      <li><span>In <b>My Account</b>, send sample payment details (any 6+ letter transaction ID, for example TEST12345).</span></li>
+      <li><span>Open the <a href="sales/index.html">Sales Desk</a> (70003 / 1234), find the application under <b>Payment to Check</b> and press <b>Verify and Enroll</b>.</span></li>
+      <li><span>Back in <a href="www/account.html">My Account</a> the Student ID and PIN appear. Press <b>Open Student Portal</b> and sign in.</span></li>
+    </ol>
+  </div>
+</section>
+<script>
+document.getElementById("reset").addEventListener("click", function () {
+  var b = this;
+  if (b.dataset.sure !== "1") { b.dataset.sure = "1"; b.textContent = "Press Again to Clear"; return; }
+  QEC_API.resetPreview().then(function () {
+    ["qec.student", "qec.staff.sales", "qec.staff.teacher", "qec.staff.office"].forEach(function (k) { QEC.session.del(k); });
+    b.dataset.sure = ""; b.textContent = "Cleared"; QEC.toast("Preview data cleared.", "ok");
+  });
+});
+</script>
+</body>
+</html>

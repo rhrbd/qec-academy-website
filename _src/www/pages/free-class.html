@@ -1,0 +1,40 @@
+<!--meta title="Book a Free Class" desc="Book a free live trial class at QEC Academy for Class 4, 5 or 6. No account or payment needed." nav="" -->
+<section class="page-hero">
+  <span class="aurora a1" aria-hidden="true"></span><span class="aurora a2" aria-hidden="true" style="opacity:.25"></span>
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Home</a> / Free Class</p>
+    <h1>Book a Free Class</h1>
+    <p class="bn-sub" lang="bn">একটি ফ্রি লাইভ ক্লাস</p>
+    <p class="lead">Sit in a real QEC class before you decide. No account and no payment needed; our admission team calls you within one working day.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split">
+    <div data-reveal>
+      <h2>What Happens Next</h2>
+      <ol class="steps" style="grid-template-columns:1fr;gap:24px">
+        <li style="padding:0 0 0 66px"><h3>We Call You</h3><p>To fix a day and the right batch.</p></li>
+        <li style="padding:0 0 0 66px"><h3>Free Live Class</h3><p>Your child joins one class with a QEC teacher.</p></li>
+        <li class="amber" style="padding:0 0 0 66px"><h3>Decide Calmly</h3><p>Like it? Create an account and apply in five minutes.</p></li>
+      </ol>
+    </div>
+    <div class="form-card" data-reveal>
+      <form id="free-form" data-validate data-done="free-done" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="d-student">Student's Name <span class="req">*</span></label><input id="d-student" name="student" required data-rules="name" autocomplete="off"><div class="err">Write the student's name.</div></div>
+          <div class="field"><label for="d-guardian">Guardian's Name <span class="req">*</span></label><input id="d-guardian" name="guardian" required data-rules="name" autocomplete="name"><div class="err">Write the guardian's name.</div></div>
+          <div class="field"><label for="d-phone">Mobile Number <span class="req">*</span></label><input id="d-phone" name="phone" required data-rules="phone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"><div class="err">Use an 11-digit number that starts with 01.</div></div>
+          <div class="field"><label for="f-class">Class <span class="req">*</span></label><select id="f-class" name="class" required><option value="">Choose a Class</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option></select><div class="err">Choose a class.</div></div>
+          <div class="field full"><label for="d-mode">How Would You Like to Join?</label><select id="d-mode" name="mode"><option value="online">Online (Live Class)</option><option value="offline">At the Centre</option></select></div>
+        </div>
+        <button class="btn btn-amber btn-block" type="submit" style="margin-top:20px">Book My Free Class</button>
+        <p class="form-note">Template preview: this form checks your details but does not send them yet. Later each booking becomes a lead on the sales desk.</p>
+      </form>
+      <div class="form-done" id="free-done" role="status">
+        <div class="big"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0f7a49" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3>Free Class Booked</h3><p class="muted">The admission team will call the number you gave. In this preview nothing was sent.</p>
+        <button class="btn btn-ghost btn-sm" type="button" data-reset-form="free-form">Book Another</button>
+      </div>
+    </div>
+  </div>
+</section>

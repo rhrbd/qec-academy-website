@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign Up | QEC Academy</title>
+<meta name="description" content="Create a free QEC Academy student account to apply for courses.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#5b1462">
+<meta property="og:title" content="Sign Up | QEC Academy">
+<meta property="og:description" content="Create a free QEC Academy student account to apply for courses.">
+<link rel="icon" type="image/png" href="assets/img/mark.png">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+
+<script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+<script src="assets/js/qec-core.js"></script>
+<script src="assets/js/qec-api.js"></script>
+<script src="assets/js/catalog.js"></script>
+</head>
+<body class="site" data-app="www">
+<a class="skip" href="#main">Skip to Content</a>
+<div class="preview-bar" role="note">Template preview of the new QEC Academy website. Values marked <span class="ph-dot" aria-hidden="true"></span> are sample content.</div>
+<header class="topbar" id="top">
+  <div class="wrap topbar-in">
+    <a class="brand" href="index.html" aria-label="QEC Academy home">
+      <img src="assets/img/mark.png" alt="" width="40" height="40">
+      <span class="brand-name">QEC <b>Academy</b></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sitenav">
+      <span class="bars" aria-hidden="true"></span><span class="sr">Menu</span>
+    </button>
+    <nav id="sitenav" class="sitenav" aria-label="Main">
+      <a href="courses.html" data-nav="courses">Courses</a>
+      <a href="skill-hub.html" data-nav="skillhub">Skill Hub</a>
+      <a href="books.html" data-nav="books">Books</a>
+      <a href="medha.html" data-nav="medha">Medha Onneshon</a>
+      <a href="about.html" data-nav="about">About Us</a>
+      <a href="contact.html" data-nav="contact">Contact</a>
+      <span class="nav-actions">
+        <a class="btn btn-ghost btn-sm nav-guest" href="login.html">Log In</a>
+        <a class="btn btn-amber btn-sm nav-guest" href="signup.html">Sign Up</a>
+        <a class="nav-me" href="account.html" data-nav="account"><span class="avatar" id="nav-initials">Q</span><span>My Account</span></a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="auth">
+  <section class="auth-side">
+    <span class="aurora a1" aria-hidden="true"></span><span class="aurora a2" aria-hidden="true" style="opacity:.25"></span>
+    <p class="bn" lang="bn" style="color:var(--amber-300);font-size:22px;margin:0">শেখার ভিত্তি হোক এখানেই</p>
+    <h1>Create Your Free Student Account</h1>
+    <ol class="steps-mini">
+      <li><span><b>Sign Up</b>The student's details, once.</span></li>
+      <li><span><b>Apply for a Course</b>Choose the class, version and batch.</span></li>
+      <li><span><b>Pay and Get Confirmed</b>The office checks the payment and enrolls you.</span></li>
+      <li><span><b>Open the Student Portal</b>With your new Student ID and PIN.</span></li>
+    </ol>
+  </section>
+  <section class="auth-main">
+    <div>
+      <h2 style="font-size:32px;margin-bottom:4px">Sign Up</h2>
+      <p class="muted">Already have an account? <a href="login.html" id="to-login">Log In</a></p>
+      <p class="panel" id="course-note" hidden style="padding:12px 16px;margin:0 0 16px"></p>
+      <form id="signup-form" data-validate data-handler="signup" novalidate>
+        <div class="alert" role="alert"></div>
+        <div class="form-grid">
+          <div class="field full"><label for="s-name">Student's Full Name <span class="req">*</span></label><input id="s-name" name="name" required data-rules="name" autocomplete="off"><div class="err">Write the student's full name.</div></div>
+          <div class="field"><label for="s-guardian">Guardian's Name <span class="req">*</span></label><input id="s-guardian" name="guardian" required data-rules="name" autocomplete="name"><div class="err">Write the guardian's name.</div></div>
+          <div class="field"><label for="s-phone">Guardian's Mobile <span class="req">*</span></label><input id="s-phone" name="phone" required data-rules="phone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"><div class="err">Use an 11-digit number that starts with 01.</div><div class="hint">You log in with this number.</div></div>
+          <div class="field"><label for="s-email">Student's Gmail</label><input id="s-email" name="email" type="email" data-rules="email" autocomplete="email" placeholder="name@gmail.com"><div class="err">Check the email address.</div><div class="hint">Needed later for Google Classroom.</div></div>
+          <div class="field"><label for="s-cls">Current Class <span class="req">*</span></label><select id="s-cls" name="cls" required><option value="">Choose</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option><option value="8">Class 8 (for Class 9 in 2027)</option><option value="9">Class 9 (for Class 10 in 2027)</option></select><div class="err">Choose the current class.</div></div>
+          <div class="field full"><span class="lbl" id="s-ver-l">Version <span class="req">*</span></span>
+            <div class="seg" role="radiogroup" aria-labelledby="s-ver-l"><label><input type="radio" name="version" value="BV" required> Bangla Version</label><label><input type="radio" name="version" value="EV"> English Version</label></div>
+            <div class="err">Choose a version.</div></div>
+          <div class="field full"><label for="s-school">School</label><input id="s-school" name="school" autocomplete="off"></div>
+          <div class="field"><label for="s-pw">Password <span class="req">*</span></label><div class="pw-wrap"><input id="s-pw" name="password" type="password" required data-rules="password" autocomplete="new-password"><button type="button" aria-pressed="false" aria-label="Show password">Show</button></div><div class="err">At least 8 characters, with a letter and a number.</div></div>
+          <div class="field"><label for="s-pw2">Confirm Password <span class="req">*</span></label><input id="s-pw2" name="password2" type="password" required data-rules="same" data-same="s-pw" autocomplete="new-password"><div class="err">The two passwords do not match.</div></div>
+          <div class="field full"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:500"><input type="checkbox" name="agree" required style="width:20px;height:20px;margin-top:3px;accent-color:#5b1462"> I am the guardian, or I have the guardian's permission, and I agree to the QEC terms and privacy policy.</label><div class="err">Please confirm to continue.</div></div>
+        </div>
+        <button class="btn btn-amber btn-block" type="submit" style="margin-top:20px">Create Account</button>
+        <p class="form-note">Preview: your account is kept only on this device so the full flow can be shown. At launch it is stored securely on the QEC server.</p>
+      </form>
+    </div>
+  </section>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var cid = QEC.param("course"), shift = QEC.param("shift") || "Afternoon";
+  var c = cid && (QEC_CATALOG.courses.filter(function (x) { return x.id === cid; })[0]);
+  if (c && c.kind !== "free") {
+    var n = document.getElementById("course-note"); n.hidden = false;
+    n.innerHTML = "You are applying for <b>" + QEC.esc(c.title) + "</b>. Create your account and the application is made for you.";
+    document.getElementById("to-login").href = "login.html?course=" + encodeURIComponent(cid) + "&shift=" + encodeURIComponent(shift);
+  }
+  QEC_API.me().then(function (a) { if (a) location.replace("account.html"); });
+  QEC_FORMS.signup = function (d) {
+    return QEC_API.signup(d).then(function () {
+      if (c && c.kind !== "free") return QEC_API.requestEnrollment(c.id, { shift: shift }).then(function (e) { location.href = "account.html#" + e.id; });
+      location.href = "account.html";
+    });
+  };
+});
+</script>
+</main>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/logo.png" alt="QEC Academy — শেখার ভিত্তি হোক এখানেই" width="204" height="113" class="footer-logo">
+      <p>Quarantine Education Care. Pre-Cadet and Cadet College Admission coaching for Class 4 to 6, online and offline.</p>
+    </div>
+    <div>
+      <h2 class="fh">Programs</h2>
+      <ul>
+        <li><a href="courses.html">All Courses</a></li>
+        <li><a href="courses.html?track=Cadet%20College">Cadet College Admission</a></li>
+        <li><a href="skill-hub.html">Skill Hub</a></li>
+        <li><a href="medha.html">Medha Onneshon 2026</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="fh">Academy</h2>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html#teachers">Our Teachers</a></li>
+        <li><a href="books.html">QEC Mastering Books</a></li>
+        <li><a href="free-class.html">Book a Free Class</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="fh">Students</h2>
+      <ul>
+        <li><a href="signup.html">Create an Account</a></li>
+        <li><a href="login.html">Log In</a></li>
+        <li><a href="account.html">My Account</a></li>
+        <li><a href="contact.html#faq">Help and FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="fh">Talk to Us</h2>
+      <ul class="contact-list">
+        <li><a href="tel:+8801841233235">01841-233235</a></li>
+        <li><a href="https://wa.me/8801841233235" rel="noopener" target="_blank">WhatsApp Helpline</a></li>
+        <li><a href="https://www.facebook.com/QECed/" rel="noopener" target="_blank">Facebook: QECed</a></li>
+        <li><a href="mailto:programs@quarantineeducationcare.org">programs@quarantineeducationcare.org</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© 2026 QEC Academy. All Rights Reserved.</span>
+    <span><a href="contact.html#policies">Privacy</a> <a href="contact.html#policies">Terms</a> <a href="contact.html#policies">Refund Policy</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

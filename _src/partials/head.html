@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{title}}</title>
 <meta name="description" content="{{desc}}">
+{{robots}}
 <meta name="theme-color" content="#5b1462">
 <meta property="og:title" content="{{title}}">
 <meta property="og:description" content="{{desc}}">
-<meta property="og:image" content="{{root}}assets/img/logo.png">
-<link rel="icon" type="image/png" href="{{root}}assets/img/mark.png">
-<link rel="apple-touch-icon" href="{{root}}assets/img/icon-192.png">
-<link rel="manifest" href="{{root}}manifest.webmanifest">
+<link rel="icon" type="image/png" href="assets/img/mark.png">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+{{manifest}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{root}}assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css">
 {{extra_css}}
+<script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+<script src="assets/js/qec-core.js"></script>
+<script src="assets/js/qec-api.js"></script>
+<script src="assets/js/catalog.js"></script>
 </head>

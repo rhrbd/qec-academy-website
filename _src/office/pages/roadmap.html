@@ -1,0 +1,59 @@
+<!--meta title="Platform Roadmap" desc="The QEC Academy platform plan: public website, private portals on subdomains, enrollment flow and launch timeline." layout="app" -->
+<script>if(!QEC_API.current("qec.staff.office"))location.replace("index.html");</script>
+<div class="main" id="main" style="min-height:100vh">
+  <header class="mbar">
+    <a class="brand" href="dashboard.html"><img src="assets/img/mark.png" alt="" width="34" height="34"><span class="brand-name">QEC <b>Academy</b></span></a>
+    <div><h1>Platform Roadmap</h1><div class="sub">For management review</div></div>
+    <span class="grow"></span>
+    <a class="btn btn-ghost btn-sm" href="dashboard.html">Back to Console</a>
+  </header>
+  <div class="content" style="max-width:1180px;margin:0 auto;width:100%">
+    <div class="card">
+      <h2>One Public Website, Four Private Portals</h2>
+      <div class="ptbl-wrap"><table class="ptbl">
+        <thead><tr><th>Address</th><th>Who Uses It</th><th>Public?</th><th>What It Does</th></tr></thead>
+        <tbody>
+          <tr><td><b>qecacademy.com</b></td><td>Everyone</td><td><span class="tag ok">Public</span></td><td>Courses, Skill Hub, books, Medha, about, contact. Student sign up, log in and My Account (apply, send payment, track status).</td></tr>
+          <tr><td><b>student.qecacademy.com</b></td><td>Enrolled students and guardians</td><td><span class="tag bad">Private</span></td><td>Live classes, routine, results, study materials, help. Only works with a Student ID and PIN given after enrollment.</td></tr>
+          <tr><td><b>teacher.qecacademy.com</b></td><td>Teachers</td><td><span class="tag bad">Private</span></td><td>Open live classes, attendance, marks, class logs.</td></tr>
+          <tr><td><b>sales.qecacademy.com</b></td><td>Sales and admissions team</td><td><span class="tag bad">Private</span></td><td>Approve enrollments after checking payment, issue Student ID and PIN, lead pipeline, calls, reports.</td></tr>
+          <tr><td><b>office.qecacademy.com</b></td><td>Office and management</td><td><span class="tag bad">Private</span></td><td>Students, teachers, batches, connected systems, this roadmap.</td></tr>
+          <tr><td><b>medha.qecacademy.com</b></td><td>Exam candidates</td><td><span class="tag ok">Public</span></td><td>Medha Onneshon exam site (already live, separate project).</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted" style="font-size:14px;margin:12px 0 0">Private portals are hidden from search engines, never linked from the public menu, and only answer on their own subdomain. At launch the QEC server checks every sign-in and every request, so a portal shows nothing to anyone without the right role.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h2>Enrollment Flow</h2>
+        <ol class="howto">
+          <li><b>Sign up</b> on qecacademy.com (student and guardian details, password).</li>
+          <li><b>Apply</b> for a course and batch from the course page.</li>
+          <li><b>Pay manually</b>: bKash, Nagad, Rocket, bank or cash; the guardian enters the transaction ID.</li>
+          <li><b>Sales verifies</b> the payment on sales.qecacademy.com and presses Verify and Enroll.</li>
+          <li><b>Access opens</b>: Student ID and PIN are created, sent by SMS and email, and the Student Portal works.</li>
+        </ol>
+        <p class="muted" style="font-size:14px;margin:12px 0 0">Only step 3 is manual. Online payment (SSLCommerz, bKash API) can replace it later without changing the other steps.</p>
+      </div>
+      <div class="card">
+        <h2>Timeline <small>Targets to agree</small></h2>
+        <ol class="timeline">
+          <li class="done"><span class="when">Oct 2026</span><h3>Core Systems in Place</h3><p>Master Database, Teacher Class Portal, Google Classroom per batch, Medha Onneshon.</p></li>
+          <li class="now"><span class="when">Nov 2026</span><h3>Platform Template</h3><p>Public website and all four portals with the full enrollment flow, on GitHub.</p></li>
+          <li><span class="when">Dec 2026</span><h3>Website Live</h3><p>Real content and prices; GitHub connected to Hostinger; domain and subdomains pointed.</p></li>
+          <li><span class="when">Jan–Feb 2027</span><h3>Backend and Live Portals</h3><p>Accounts, enrollments and portal data on the QEC server, linked to the Master Database.</p></li>
+          <li><span class="when">2027 Session</span><h3>Class 9 and 10</h3><p>New programs in the same catalogue, portals and enrollment flow.</p></li>
+          <li><span class="when">Later in 2027</span><h3>App on Every Phone</h3><p>Student Portal installs from the browser at no cost; a Play Store wrapper if needed.</p></li>
+        </ol>
+      </div>
+    </div>
+    <div class="card">
+      <h2>How the Pieces Fit</h2>
+      <div class="arch">
+        <div class="layer"><h3>People See</h3><ul><li>qecacademy.com</li><li>student. / teacher. / sales. / office. portals</li><li>Installable student app (same portal)</li></ul></div>
+        <div class="layer"><h3>One QEC API</h3><ul><li>Accounts and roles</li><li>Enrollments and payments</li><li>Classes, attendance, marks</li><li>SMS and email notices</li></ul></div>
+        <div class="layer"><h3>Data Lives In</h3><ul><li>QEC database (new)</li><li>[CORE] Master Database 2026 (sync)</li><li>Google Classroom, Meet, Calendar</li><li>Medha Onneshon sheets</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Account | QEC Academy</title>
+<meta name="description" content="Your QEC Academy account: applications, payments and enrollment status.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#5b1462">
+<meta property="og:title" content="My Account | QEC Academy">
+<meta property="og:description" content="Your QEC Academy account: applications, payments and enrollment status.">
+<link rel="icon" type="image/png" href="assets/img/mark.png">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+
+<script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+<script src="assets/js/qec-core.js"></script>
+<script src="assets/js/qec-api.js"></script>
+<script src="assets/js/catalog.js"></script>
+</head>
+<body class="site" data-app="www">
+<a class="skip" href="#main">Skip to Content</a>
+<div class="preview-bar" role="note">Template preview of the new QEC Academy website. Values marked <span class="ph-dot" aria-hidden="true"></span> are sample content.</div>
+<header class="topbar" id="top">
+  <div class="wrap topbar-in">
+    <a class="brand" href="index.html" aria-label="QEC Academy home">
+      <img src="assets/img/mark.png" alt="" width="40" height="40">
+      <span class="brand-name">QEC <b>Academy</b></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sitenav">
+      <span class="bars" aria-hidden="true"></span><span class="sr">Menu</span>
+    </button>
+    <nav id="sitenav" class="sitenav" aria-label="Main">
+      <a href="courses.html" data-nav="courses">Courses</a>
+      <a href="skill-hub.html" data-nav="skillhub">Skill Hub</a>
+      <a href="books.html" data-nav="books">Books</a>
+      <a href="medha.html" data-nav="medha">Medha Onneshon</a>
+      <a href="about.html" data-nav="about">About Us</a>
+      <a href="contact.html" data-nav="contact">Contact</a>
+      <span class="nav-actions">
+        <a class="btn btn-ghost btn-sm nav-guest" href="login.html">Log In</a>
+        <a class="btn btn-amber btn-sm nav-guest" href="signup.html">Sign Up</a>
+        <a class="nav-me" href="account.html" aria-current="page" data-nav="account"><span class="avatar" id="nav-initials">Q</span><span>My Account</span></a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero" style="padding-bottom:40px">
+  <span class="aurora a1" aria-hidden="true"></span>
+  <div class="wrap acct-head">
+    <div>
+      <p class="crumbs"><a href="index.html">Home</a> / My Account</p>
+      <h1 id="acct-hello" style="margin-bottom:6px">My Account</h1>
+      <p class="lead mb-0" id="acct-sub">Loading your account.</p>
+    </div>
+    <div class="gap-row"><a class="btn btn-glass btn-sm" href="courses.html">Browse Courses</a><button class="btn btn-glass btn-sm" type="button" id="sign-out">Log Out</button></div>
+  </div>
+</section>
+<section class="section" style="padding-top:40px">
+  <div class="wrap acct-grid">
+    <div>
+      <h2 style="font-size:28px">My Applications</h2>
+      <div id="enr-list" aria-live="polite"></div>
+    </div>
+    <aside>
+      <div class="panel" id="profile"></div>
+      <div class="panel" style="margin-top:18px">
+        <h3>How Payment Works</h3>
+        <p class="muted" style="font-size:15px">Payment is checked by hand by the QEC office. Send money to one of these accounts, then write the transaction ID in your application.</p>
+        <div id="pay-accounts" style="font-size:15px"></div>
+        <p class="form-note mb-0">Paying in cash? Come to the office with the student's name and mobile number.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+<section class="section section-tint">
+  <div class="wrap">
+    <div class="sec-head"><h2>Apply for Another Course</h2><p>Each application is checked and confirmed by the office.</p></div>
+    <div class="ccards" data-cards="pc4,pc5,pc6,mt6,olympiad,spoken"></div>
+  </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var esc = QEC.esc, P = QEC_CATALOG.payment;
+  var STEPS = ["Applied", "Payment Sent", "Verified and Enrolled", "Portal Access"];
+  var LABEL = { requested: "Waiting for Payment", payment_submitted: "Checking Payment", enrolled: "Enrolled", rejected: "Not Approved", waitlist: "On the Waitlist", cancelled: "Cancelled" };
+  function fmt(iso) { try { return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(iso)); } catch (e) { return iso; } }
+  function batchName(b) { var m = /^(\d)(BV|EV)-(Aft|Night|Offline)$/.exec(b || ""); return m ? "Class " + m[1] + ", " + (m[2] === "BV" ? "Bangla" : "English") + " Version, " + (m[3] === "Aft" ? "Afternoon" : m[3] === "Night" ? "Night" : "At the Centre") : b; }
+
+  document.getElementById("pay-accounts").innerHTML = ["bKash", "Nagad", "Rocket", "Bank"].map(function (k) {
+    return '<div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)"><b>' + k + "</b><span>" + esc(P[k]) + '<span class="ph-dot" title="Sample account"></span></span></div>';
+  }).join("") + '<p class="muted" style="font-size:14px;margin:8px 0 0">' + esc(P.reference) + ".</p>";
+
+  QEC_API.me().then(function (a) {
+    if (!a) { location.replace("login.html?next=account"); return; }
+    document.getElementById("acct-hello").textContent = "Hello, " + a.name.split(/\s+/)[0];
+    document.getElementById("acct-sub").textContent = "Class " + a.cls + ", " + (a.version === "BV" ? "Bangla" : "English") + " Version. Guardian: " + a.guardian + ".";
+    document.getElementById("profile").innerHTML = '<h3>My Profile</h3><table class="tbl" style="min-width:0;font-size:15px"><tbody>' +
+      [["Student", a.name], ["Guardian", a.guardian], ["Mobile", a.phone], ["Gmail", a.email || "Not added"], ["Class", "Class " + a.cls], ["Version", a.version === "BV" ? "Bangla Version" : "English Version"], ["School", a.school || "Not added"], ["Account", a.id]]
+        .map(function (r) { return '<tr><th scope="row" style="background:none;padding:8px 0">' + r[0] + '</th><td style="padding:8px 0">' + esc(r[1]) + "</td></tr>"; }).join("") +
+      '</tbody></table><p class="form-note mb-0">To change these details, call the office.</p>';
+    render();
+  });
+
+  function track(st) {
+    var n = st === "requested" ? 1 : st === "payment_submitted" ? 2 : st === "enrolled" ? 4 : 0;
+    return '<ol class="track">' + STEPS.map(function (s, i) { return '<li class="' + (i < n ? "done" : i === n ? "now" : "") + '">' + s + "</li>"; }).join("") + "</ol>";
+  }
+  function payForm(e) {
+    var amt = e.payment ? e.payment.amount : "";
+    return '<form class="pay-form" data-enr="' + esc(e.id) + '" data-validate novalidate><div class="alert" role="alert"></div>' +
+      '<div class="field"><span class="lbl" id="pm-' + e.id + '">How Did You Pay? <span class="req">*</span></span><div class="pay-ways" role="radiogroup" aria-labelledby="pm-' + e.id + '">' +
+      ["bKash", "Nagad", "Rocket", "Bank"].map(function (m, i) { return '<label><input type="radio" name="method" value="' + m + '"' + (i === 0 ? " required" : "") + (e.payment && e.payment.method === m ? " checked" : "") + "> " + m + "</label>"; }).join("") +
+      '</div><div class="err">Choose how you paid.</div></div>' +
+      '<div class="form-grid"><div class="field"><label for="trx-' + e.id + '">Transaction ID <span class="req">*</span></label><input id="trx-' + e.id + '" name="trx" required data-rules="trx" autocomplete="off" placeholder="e.g. 9BK7Q2XH1M" value="' + esc(e.payment ? e.payment.trx : "") + '"><div class="err">6 to 20 letters and numbers, from your payment SMS.</div></div>' +
+      '<div class="field"><label for="amt-' + e.id + '">Amount Paid (Taka) <span class="req">*</span></label><input id="amt-' + e.id + '" name="amount" required data-rules="amount" inputmode="numeric" value="' + esc(amt) + '"><div class="err">Write the amount you paid.</div></div>' +
+      '<div class="field full"><label for="payer-' + e.id + '">Sent From Mobile Number <span class="req">*</span></label><input id="payer-' + e.id + '" name="payer" required data-rules="phone" inputmode="tel" placeholder="01XXXXXXXXX" value="' + esc(e.payment ? e.payment.payer : "") + '"><div class="err">Use an 11-digit number that starts with 01.</div></div></div>' +
+      '<div class="gap-row" style="margin-top:16px"><button class="btn btn-plum" type="submit">' + (e.payment ? "Update Payment Details" : "Send Payment Details") + "</button>" +
+      (e.status === "requested" ? '<button class="btn btn-ghost btn-sm" type="button" data-cancel="' + esc(e.id) + '">Cancel Application</button>' : "") + "</div></form>";
+  }
+  function card(e) {
+    var c = e.course, body = "";
+    if (e.status === "requested") body = track(e.status) + '<div class="pay-box"><b>Next: Pay and Send the Details.</b> Fee: ' + esc(c.feeText || "—") + '<span class="ph-dot" title="Sample fee"></span>. Pay by bKash, Nagad, Rocket or bank, then fill this form. Paying at the office? Just visit us.</div>' + payForm(e);
+    else if (e.status === "payment_submitted") body = track(e.status) + '<div class="pay-box"><b>We Are Checking Your Payment.</b> ' + esc(e.payment.method) + ", transaction " + esc(e.payment.trx) + ", ৳ " + esc(e.payment.amount) + ". The office usually confirms within one working day.</div>" +
+      '<details><summary style="cursor:pointer;color:var(--plum);font-weight:600">Made a Mistake? Correct the Payment Details</summary><div style="margin-top:14px">' + payForm(e) + "</div></details>";
+    else if (e.status === "enrolled") body = track(e.status) + '<div class="pay-box" style="background:var(--leaf-50);border-color:#bfe5cf"><b>Enrolled. Welcome to QEC!</b> Batch: ' + esc(batchName(e.batch)) + ".</div>" +
+      '<div class="cred"><div><span>Student ID</span><b>' + esc(e.studentId) + '</b></div><div><span>PIN</span><b>' + esc(e.pin) + "</b></div></div>" +
+      '<p class="form-note">Keep these safe. At launch the PIN is sent by SMS and email and is not shown here again.</p>' +
+      '<a class="btn btn-amber" href="../student/index.html?sid=' + encodeURIComponent(e.studentId) + '" data-xapp="student/index.html?sid=' + encodeURIComponent(e.studentId) + '">Open Student Portal <span class="ar" aria-hidden="true">›</span></a>';
+    else if (e.status === "waitlist") body = '<div class="pay-box"><b>You Are on the Waitlist.</b> We will call you as soon as admission opens for this program. No payment is needed now.</div><button class="btn btn-ghost btn-sm" type="button" data-cancel="' + esc(e.id) + '">Leave Waitlist</button>';
+    else if (e.status === "rejected") body = '<div class="pay-box" style="background:var(--bad-50);border-color:#f4c7c8"><b>Not Approved.</b> ' + esc(e.reason || "") + ' Call <a href="tel:+8801841233235">01841-233235</a> if you have questions.</div>';
+    else body = '<p class="muted mb-0">This application was cancelled.</p>';
+    return '<article class="enr" id="' + esc(e.id) + '"><div class="enr-top"><div><h3>' + esc(c.title) + '</h3><span class="sub">Application ' + esc(e.id) + " · " + esc(e.shift) + " · Applied " + esc(fmt(e.createdAt)) + '</span></div><span class="status st-' + esc(e.status) + '">' + esc(LABEL[e.status] || e.status) + "</span></div>" +
+      '<div class="enr-body">' + body + "</div></article>";
+  }
+  function render() {
+    QEC_API.myEnrollments().then(function (list) {
+      var box = document.getElementById("enr-list");
+      box.innerHTML = list.length ? list.map(card).join("") :
+        '<div class="empty"><b>No Applications Yet.</b><br>Choose a course below and press Enroll Now.<br><a class="btn btn-amber btn-sm" href="courses.html" style="margin-top:14px">Browse Courses</a></div>';
+      QEC.fixLinks(box);
+      box.querySelectorAll("form.pay-form").forEach(function (f) {
+        f.setAttribute("data-handler", "pay-" + f.getAttribute("data-enr"));
+        QEC_FORMS["pay-" + f.getAttribute("data-enr")] = function (d) {
+          return QEC_API.submitPayment(f.getAttribute("data-enr"), d).then(function () { QEC.toast("Payment details sent. The office will confirm soon.", "ok"); render(); });
+        };
+        QEC_wireForm(f);
+      });
+      box.querySelectorAll("[data-cancel]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          if (b.dataset.sure !== "1") { b.dataset.sure = "1"; b.textContent = "Press Again to Confirm"; return; }
+          QEC_API.cancelEnrollment(b.getAttribute("data-cancel")).then(function () { QEC.toast("Application cancelled."); render(); }, function (er) { QEC.toast(er.message, "bad"); });
+        });
+      });
+      if (location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView({ block: "start" }); }
+    });
+  }
+  document.getElementById("sign-out").addEventListener("click", function () { QEC_API.logout().then(function () { location.href = "index.html"; }); });
+});
+</script>
+</main>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/logo.png" alt="QEC Academy — শেখার ভিত্তি হোক এখানেই" width="204" height="113" class="footer-logo">
+      <p>Quarantine Education Care. Pre-Cadet and Cadet College Admission coaching for Class 4 to 6, online and offline.</p>
+    </div>
+    <div>
+      <h2 class="fh">Programs</h2>
+      <ul>
+        <li><a href="courses.html">All Courses</a></li>
+        <li><a href="courses.html?track=Cadet%20College">Cadet College Admission</a></li>
+        <li><a href="skill-hub.html">Skill Hub</a></li>
+        <li><a href="medha.html">Medha Onneshon 2026</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="fh">Academy</h2>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html#teachers">Our Teachers</a></li>
+        <li><a href="books.html">QEC Mastering Books</a></li>
+        <li><a href="free-class.html">Book a Free Class</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="fh">Students</h2>
+      <ul>
+        <li><a href="signup.html">Create an Account</a></li>
+        <li><a href="login.html">Log In</a></li>
+        <li><a href="account.html">My Account</a></li>
+        <li><a href="contact.html#faq">Help and FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="fh">Talk to Us</h2>
+      <ul class="contact-list">
+        <li><a href="tel:+8801841233235">01841-233235</a></li>
+        <li><a href="https://wa.me/8801841233235" rel="noopener" target="_blank">WhatsApp Helpline</a></li>
+        <li><a href="https://www.facebook.com/QECed/" rel="noopener" target="_blank">Facebook: QECed</a></li>
+        <li><a href="mailto:programs@quarantineeducationcare.org">programs@quarantineeducationcare.org</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© 2026 QEC Academy. All Rights Reserved.</span>
+    <span><a href="contact.html#policies">Privacy</a> <a href="contact.html#policies">Terms</a> <a href="contact.html#policies">Refund Policy</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

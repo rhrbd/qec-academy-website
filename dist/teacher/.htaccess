@@ -1,0 +1,12 @@
+# QEC Teacher Portal - private app
+Options -Indexes
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "same-origin"
+</IfModule>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} !^teacher\.qecacademy\.com$ [NC]
+  RewriteRule ^(.*)$ https://teacher.qecacademy.com/$1 [R=301,L]
+</IfModule>

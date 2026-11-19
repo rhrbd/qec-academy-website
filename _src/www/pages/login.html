@@ -1,0 +1,40 @@
+<!--meta title="Log In" desc="Log in to your QEC Academy student account." nav="" -->
+<div class="auth">
+  <section class="auth-side">
+    <span class="aurora a1" aria-hidden="true"></span>
+    <p class="bn" lang="bn" style="color:var(--amber-300);font-size:22px;margin:0">শেখার ভিত্তি হোক এখানেই</p>
+    <h1>Welcome Back</h1>
+    <p style="max-width:44ch">Log in to apply for courses, send payment details and follow your enrollment. Enrolled students then use the private Student Portal for classes.</p>
+  </section>
+  <section class="auth-main">
+    <div>
+      <h2 style="font-size:32px;margin-bottom:4px">Log In</h2>
+      <p class="muted">New to QEC? <a href="signup.html" id="to-signup">Create a Free Account</a></p>
+      <form id="login-form" data-validate data-handler="login" novalidate>
+        <div class="alert" role="alert"></div>
+        <div class="field"><label for="l-who">Mobile Number or Email <span class="req">*</span></label><input id="l-who" name="who" required autocomplete="username" placeholder="01XXXXXXXXX"><div class="err">Write the mobile number or email on your account.</div></div>
+        <div class="field" style="margin-top:14px"><label for="l-pw">Password <span class="req">*</span></label><div class="pw-wrap"><input id="l-pw" name="password" type="password" required autocomplete="current-password"><button type="button" aria-pressed="false" aria-label="Show password">Show</button></div><div class="err">Write your password.</div></div>
+        <button class="btn btn-plum btn-block" type="submit" style="margin-top:20px">Log In</button>
+      </form>
+      <p class="form-note">Forgot your password? Call <a href="tel:+8801841233235">01841-233235</a> from the mobile number on your account.</p>
+      <div class="panel" style="margin-top:22px">
+        <h3 style="font-size:18px;margin-bottom:6px">Already Enrolled?</h3>
+        <p class="muted" style="margin-bottom:10px">Classes, routine and results are in the private Student Portal. Log in there with your Student ID and PIN.</p>
+        <a class="btn btn-ghost btn-sm" href="../student/index.html" data-xapp="student/index.html">Open Student Portal</a>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var cid = QEC.param("course"), shift = QEC.param("shift") || "Afternoon";
+  if (cid) document.getElementById("to-signup").href = "signup.html?course=" + encodeURIComponent(cid) + "&shift=" + encodeURIComponent(shift);
+  QEC_API.me().then(function (a) { if (a && !cid) location.replace("account.html"); });
+  QEC_FORMS.login = function (d) {
+    return QEC_API.login(d.who, d.password).then(function () {
+      if (cid) return QEC_API.requestEnrollment(cid, { shift: shift }).then(function (e) { location.href = "account.html#" + e.id; }, function () { location.href = "account.html"; });
+      location.href = "account.html";
+    });
+  };
+});
+</script>
