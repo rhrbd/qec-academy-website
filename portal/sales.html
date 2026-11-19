@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sales desk | QEC Academy</title>
+<meta name="description" content="QEC Academy sales desk: leads from the website, Facebook and Medha Onneshon, follow-up calls and admissions.">
+<meta name="theme-color" content="#5b1462">
+<meta property="og:title" content="Sales desk | QEC Academy">
+<meta property="og:description" content="QEC Academy sales desk: leads from the website, Facebook and Medha Onneshon, follow-up calls and admissions.">
+<meta property="og:image" content="../assets/img/logo.png">
+<link rel="icon" type="image/png" href="../assets/img/mark.png">
+<link rel="apple-touch-icon" href="../assets/img/icon-192.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/portal.css">
+</head>
+<body class="portal">
+<div class="app">
+  <aside class="side" aria-label="Sales menu">
+    <a class="brand" href="../index.html"><img src="../assets/img/mark.png" alt="" width="36" height="36"><span class="brand-name">QEC <b>Academy</b></span></a>
+    <div class="role">Sales desk</div>
+    <nav>
+      <button type="button" data-view-btn="pipeline" data-title="Lead pipeline"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="11" rx="1"/><rect x="17" y="4" width="4" height="7" rx="1"/></svg>Pipeline</button>
+      <button type="button" data-view-btn="calls" data-title="Today's calls"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Today's calls</button>
+      <button type="button" data-view-btn="report" data-title="Admissions report"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Report</button>
+    </nav>
+    <div class="side-foot"><span class="avatar">SL</span><div><b>Sales officer</b><span>ID 70003</span></div><a href="../login.html">Sign out</a></div>
+  </aside>
+  <div class="scrim"></div>
+  <div class="main" id="main">
+    <header class="mbar">
+      <button class="side-toggle" type="button" aria-expanded="false" aria-label="Open menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a0730" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div><h1 id="view-title">Lead pipeline</h1><div class="sub" data-today></div></div>
+      <span class="grow"></span>
+      <span class="demo-pill">Sample data</span>
+    </header>
+    <div class="content">
+      <section class="view" data-view="pipeline">
+        <div class="grid-4">
+          <div class="card kpi"><span>New leads this week</span><b id="k-new">0</b><span class="delta">from website and Facebook</span></div>
+          <div class="card kpi"><span>Free classes booked</span><b id="k-demo">0</b><span>this week</span></div>
+          <div class="card kpi"><span>Admissions this month</span><b>27</b><span class="delta">+9 vs last month</span></div>
+          <div class="card kpi"><span>Lead to admission</span><b>31%</b><span>last 30 days</span></div>
+        </div>
+        <div class="kanban" id="kanban" aria-live="polite"></div>
+      </section>
+      <section class="view" data-view="calls">
+        <div class="card">
+          <h2>Call today <small>sorted by follow-up time</small></h2>
+          <ul class="list" id="calls"></ul>
+        </div>
+      </section>
+      <section class="view" data-view="report">
+        <div class="grid-2">
+          <div class="card">
+            <h2>Where leads come from <small>last 30 days</small></h2>
+            <div class="bars">
+              <div class="b hi"><em>64</em><i style="height:100%"></i></div>
+              <div class="b"><em>41</em><i style="height:64%"></i></div>
+              <div class="b"><em>29</em><i style="height:45%"></i></div>
+              <div class="b"><em>18</em><i style="height:28%"></i></div>
+              <div class="b"><em>11</em><i style="height:17%"></i></div>
+            </div>
+            <div class="bars-x"><span>Facebook</span><span>Medha</span><span>Website</span><span>Referral</span><span>Walk-in</span></div>
+          </div>
+          <div class="card">
+            <h2>Admissions by class</h2>
+            <ul class="list">
+              <li><span class="x"><b>Class 4</b><div class="meter" style="margin-top:6px"><i style="width:30%"></i></div></span><span class="tag">8</span></li>
+              <li><span class="x"><b>Class 5</b><div class="meter" style="margin-top:6px"><i style="width:37%"></i></div></span><span class="tag">10</span></li>
+              <li><span class="x"><b>Class 6</b><div class="meter" style="margin-top:6px"><i style="width:33%"></i></div></span><span class="tag">9</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var STAGES=[["new","New"],["contacted","Contacted"],["demo","Free class booked"],["enrolled","Enrolled"]];
+  var L=[
+    {n:"Guardian of Tahmid",c:"Class 5 · BV",src:"Website form",st:"new",t:"10:30 AM"},
+    {n:"Guardian of Nusaiba",c:"Class 4 · EV",src:"Facebook message",st:"new",t:"11:00 AM"},
+    {n:"Guardian of Rafi",c:"Class 6 · BV",src:"Medha Onneshon",st:"new",t:"12:15 PM"},
+    {n:"Guardian of Labiba",c:"Class 6 · EV",src:"Referral",st:"contacted",t:"2:00 PM"},
+    {n:"Guardian of Sami",c:"Class 5 · EV",src:"Facebook ad",st:"contacted",t:"3:30 PM"},
+    {n:"Guardian of Ishraq",c:"Class 4 · BV",src:"Medha Onneshon",st:"demo",t:"5:00 PM"},
+    {n:"Guardian of Mahin",c:"Class 6 · BV",src:"Website form",st:"demo",t:"6:15 PM"},
+    {n:"Guardian of Arisha",c:"Class 5 · BV",src:"Walk-in",st:"enrolled",t:""}
+  ];
+  var kb=document.getElementById('kanban');
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function render(){
+    kb.innerHTML=STAGES.map(function(s,si){
+      var items=L.map(function(l,i){return [l,i];}).filter(function(p){return p[0].st===s[0];});
+      return '<div class="lane"><h3>'+s[1]+'<span>'+items.length+'</span></h3>'+
+        (items.length?items.map(function(p){var l=p[0],i=p[1];
+          var acts=(si>0?'<button type="button" data-i="'+i+'" data-d="-1">Back</button>':'')+
+                   (si<STAGES.length-1?'<button type="button" data-i="'+i+'" data-d="1">Move to '+STAGES[si+1][1]+'</button>':'');
+          return '<div class="lead-card"><b>'+esc(l.n)+'</b>'+esc(l.c)+'<div class="src">'+esc(l.src)+(l.t?' · call '+esc(l.t):'')+'</div><div class="acts">'+acts+'</div></div>';
+        }).join(''):'<p class="muted" style="font-size:14px;margin:4px">No leads here.</p>')+'</div>';
+    }).join('');
+    document.getElementById('k-new').textContent=L.filter(function(l){return l.st==='new';}).length+12;
+    document.getElementById('k-demo').textContent=L.filter(function(l){return l.st==='demo';}).length+5;
+    var calls=L.filter(function(l){return l.st!=='enrolled'&&l.t;});
+    document.getElementById('calls').innerHTML=calls.map(function(l){
+      return '<li><span class="t">'+esc(l.t)+'</span><span class="x"><b>'+esc(l.n)+'</b><span>'+esc(l.c)+' · '+esc(l.src)+'</span></span><a class="btn btn-ghost btn-sm" href="#" data-call>Call</a></li>';
+    }).join('')||'<li>No calls left today.</li>';
+  }
+  kb.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-i]'); if(!b)return;
+    var l=L[+b.getAttribute('data-i')], idx=STAGES.findIndex(function(s){return s[0]===l.st;});
+    var ni=Math.max(0,Math.min(STAGES.length-1,idx+(+b.getAttribute('data-d'))));
+    l.st=STAGES[ni][0]; render();
+    qecToast(l.n+' moved to '+STAGES[ni][1]+'.');
+  });
+  document.getElementById('calls').addEventListener('click',function(e){
+    if(e.target.closest('[data-call]')){e.preventDefault();qecToast('In the live desk this dials the guardian and logs the call.');}
+  });
+  render();
+})();
+</script>
+<script src="../assets/js/portal.js" defer></script>
+</body>
+</html>

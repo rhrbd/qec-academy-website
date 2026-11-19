@@ -1,0 +1,59 @@
+<!--meta title="Platform roadmap" desc="The plan for the new QEC Academy platform: public website, one login, student and teacher portals, sales desk, and a free app on every phone." nav="roadmap" -->
+<section class="page-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="{{root}}index.html">Home</a> / Roadmap</p>
+    <h1>The QEC platform plan</h1>
+    <p class="lead">One website for the public, one login for everyone inside QEC, and the systems we already run (Master Database, Teacher Portal, Google Classroom, Medha Onneshon) connected behind it.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <h2>Timeline</h2>
+      <p class="muted">Dates are targets<span class="ph-dot" aria-hidden="true"></span>, to be agreed with management.</p>
+    </div>
+    <ol class="timeline">
+      <li class="done"><span class="when">Oct 2026</span><h3>Core systems in place</h3><p>Master Database, Teacher Class Portal with live-class rooms, Google Classroom per batch, Medha Onneshon exam site.</p></li>
+      <li class="now"><span class="when">Nov 2026</span><h3>Website template</h3><p>This preview: every public page and every portal screen, with sample content, on GitHub.</p></li>
+      <li><span class="when">Dec 2026</span><h3>Launch on qecacademy.com</h3><p>Real content, photos and prices. Connect GitHub to Hostinger and point the domain. Admission and contact forms start sending to the database.</p></li>
+      <li><span class="when">Jan–Feb 2027</span><h3>One login, live portals</h3><p>Student, guardian and teacher pages read from the Master Database. Teacher Portal features move inside the new site.</p></li>
+      <li><span class="when">Mar 2027</span><h3>Sales desk and office console</h3><p>Every form becomes a lead. Follow-ups, admissions and reports in one place.</p></li>
+      <li><span class="when">2027 session</span><h3>Class 9 and 10</h3><p>New programs added to the same catalogue, batches and portals.</p></li>
+      <li><span class="when">Later in 2027</span><h3>App on every phone</h3><p>The site installs from the browser at no cost. A Play Store version can wrap the same app if needed.</p></li>
+    </ol>
+  </div>
+</section>
+<section class="section section-tint">
+  <div class="wrap">
+    <div class="sec-head"><h2>How the pieces fit</h2><p>The website is the front door. The data stays where it lives today until each part is moved.</p></div>
+    <div class="arch">
+      <div class="layer"><h3>People see</h3><ul><li>Public website on qecacademy.com</li><li>One login page</li><li>Student and guardian dashboard</li><li>Teacher portal</li><li>Sales desk and office console</li><li>Installable app (same site)</li></ul></div>
+      <div class="layer"><h3>Website connects to</h3><ul><li>A small API layer (Apps Script web app first, a proper backend later)</li><li>Sign-in with QEC ID and PIN, one role per person</li><li>Forms that create leads and tickets</li></ul></div>
+      <div class="layer"><h3>Data lives in</h3><ul><li>[CORE] Master Database 2026</li><li>Teacher Portal class log</li><li>Google Classroom (6 classrooms)</li><li>Google Meet and Calendar</li><li>Medha Onneshon sheets</li></ul></div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><h2>Every page in this preview</h2></div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">Page</th><th scope="col">Who uses it</th><th scope="col">Inspired by</th><th scope="col">State</th></tr></thead>
+        <tbody>
+          <tr><td><a href="{{root}}index.html">Home</a></td><td>Everyone</td><td>Udvash program catalogue, Mojaru steps</td><td>Template</td></tr>
+          <tr><td><a href="{{root}}courses.html">Courses</a></td><td>Guardians</td><td>Udvash filters by class and mode</td><td>Template</td></tr>
+          <tr><td><a href="{{root}}skill-hub.html">Skill Hub</a></td><td>Guardians</td><td>Mojaru skill categories</td><td>Template</td></tr>
+          <tr><td><a href="{{root}}books.html">Books</a></td><td>Everyone</td><td>Lobdhi books and resources</td><td>Template</td></tr>
+          <tr><td><a href="{{root}}medha.html">Medha Onneshon</a></td><td>Exam candidates</td><td>Udvash scholarship exams</td><td>Links to live site</td></tr>
+          <tr><td><a href="{{root}}about.html">About, teachers, hall of fame</a></td><td>Guardians</td><td>Lobdhi teacher panel</td><td>Template</td></tr>
+          <tr><td><a href="{{root}}admission.html">Admission</a></td><td>New families</td><td>Mojaru demo booking</td><td>Form checks input</td></tr>
+          <tr><td><a href="{{root}}login.html">Log in</a></td><td>All roles</td><td>QEC Teacher Portal sign-in</td><td>Sample sign-in</td></tr>
+          <tr><td><a href="{{root}}portal/student.html">Student dashboard</a></td><td>Students, guardians</td><td>Mojaru app flow</td><td>Sample data</td></tr>
+          <tr><td><a href="{{root}}portal/teacher.html">Teacher portal</a></td><td>Teachers</td><td>Current QEC Class Portal</td><td>Sample data</td></tr>
+          <tr><td><a href="{{root}}portal/sales.html">Sales desk</a></td><td>Sales team</td><td>New for QEC</td><td>Sample data</td></tr>
+          <tr><td><a href="{{root}}portal/admin.html">Admin console</a></td><td>Office, management</td><td>Master Database control panel</td><td>Sample data</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teacher portal | QEC Academy</title>
+<meta name="description" content="QEC Academy teacher portal: open a live class, take attendance, enter marks and see class logs.">
+<meta name="theme-color" content="#5b1462">
+<meta property="og:title" content="Teacher portal | QEC Academy">
+<meta property="og:description" content="QEC Academy teacher portal: open a live class, take attendance, enter marks and see class logs.">
+<meta property="og:image" content="../assets/img/logo.png">
+<link rel="icon" type="image/png" href="../assets/img/mark.png">
+<link rel="apple-touch-icon" href="../assets/img/icon-192.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/portal.css">
+</head>
+<body class="portal">
+<div class="app">
+  <aside class="side" aria-label="Teacher menu">
+    <a class="brand" href="../index.html"><img src="../assets/img/mark.png" alt="" width="36" height="36"><span class="brand-name">QEC <b>Academy</b></span></a>
+    <div class="role">Teacher portal</div>
+    <nav>
+      <button type="button" data-view-btn="home" data-title="My day"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>My day</button>
+      <button type="button" data-view-btn="open" data-title="Open a class"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>Open a class</button>
+      <button type="button" data-view-btn="attendance" data-title="Attendance"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Attendance</button>
+      <button type="button" data-view-btn="marks" data-title="Enter marks"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Marks</button>
+      <button type="button" data-view-btn="logs" data-title="My logs"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>My logs</button>
+    </nav>
+    <div class="side-foot"><span class="avatar">NS</span><div><b>Math teacher</b><span>ID 90003 · Mathematics</span></div><a href="../login.html">Sign out</a></div>
+  </aside>
+  <div class="scrim"></div>
+  <div class="main" id="main">
+    <header class="mbar">
+      <button class="side-toggle" type="button" aria-expanded="false" aria-label="Open menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2a0730" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div><h1 id="view-title">My day</h1><div class="sub" data-today></div></div>
+      <span class="grow"></span>
+      <span class="demo-pill">Sample data</span>
+    </header>
+    <div class="content">
+
+      <section class="view" data-view="home">
+        <p class="mb-0" style="font:700 22px/1.2 var(--f-display);color:var(--plum-900)" data-greet="teacher">Hello</p>
+        <div class="grid-4">
+          <div class="card kpi"><span>Classes today</span><b>3</b><span>Next at 4:00 PM</span></div>
+          <div class="card kpi"><span>My students</span><b>146</b><span>in 4 batches</span></div>
+          <div class="card kpi"><span>Average attendance</span><b>88%</b><span class="delta">+2% this week</span></div>
+          <div class="card kpi"><span>Marks to enter</span><b>1</b><span>Weekly exam 5</span></div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h2>Today</h2>
+            <ul class="list">
+              <li><span class="t">4:00 PM</span><span class="x"><b>Class 5 · BV · Afternoon</b><span>Mathematics · Lecture 18</span></span><button class="btn btn-plum btn-sm" type="button" data-goto="open">Open room</button></li>
+              <li><span class="t">7:30 PM</span><span class="x"><b>Class 6 · EV · Night</b><span>Mathematics · Lecture 22</span></span><button class="btn btn-ghost btn-sm" type="button" data-goto="open">Open room</button></li>
+              <li><span class="t">8:45 PM</span><span class="x"><b>Class 6 · BV · Night</b><span>Mathematics · Lecture 22</span></span><button class="btn btn-ghost btn-sm" type="button" data-goto="open">Open room</button></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>My batches</h2>
+            <ul class="list">
+              <li><span class="x"><b>Class 5 · BV · Afternoon</b><span>38 active students</span></span><span class="tag ok">91%</span></li>
+              <li><span class="x"><b>Class 5 · EV · Afternoon</b><span>31 active students</span></span><span class="tag ok">89%</span></li>
+              <li><span class="x"><b>Class 6 · BV · Night</b><span>42 active students</span></span><span class="tag warn">81%</span></li>
+              <li><span class="x"><b>Class 6 · EV · Night</b><span>35 active students</span></span><span class="tag ok">90%</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-view="open">
+        <div class="grid-2">
+          <div class="card">
+            <h2>Open a live class</h2>
+            <form id="open-form" novalidate>
+              <div class="field"><label id="b-label">Batches <span class="req">*</span></label>
+                <div class="batches" role="group" aria-labelledby="b-label" id="batch-list"></div>
+                <div class="err" id="b-err" style="display:none;color:#a3262a;font-size:13.5px;margin-top:6px">Choose at least one batch.</div>
+              </div>
+              <div class="form-grid" style="margin-top:14px">
+                <div class="field"><label for="o-subject">Subject</label><select id="o-subject"><option>Mathematics</option><option>Bangla</option><option>English</option><option>Science</option><option>General Knowledge</option></select></div>
+                <div class="field"><label for="o-lec">Lecture number</label><input id="o-lec" inputmode="numeric" value="18" maxlength="3"></div>
+                <div class="field"><label for="o-date">Date</label><input id="o-date" type="date"></div>
+                <div class="field"><label for="o-time">Start time</label><input id="o-time" type="time" value="16:00"></div>
+                <div class="field full"><label for="o-topic">Topic</label><input id="o-topic" value="Fractions: adding unlike fractions"></div>
+              </div>
+              <button class="btn btn-plum" type="submit" style="margin-top:16px">Open the room</button>
+            </form>
+            <div class="ticket-out" id="ticket-out" role="status" tabindex="-1">
+              <b>Room is open</b>
+              <span id="t-sum" class="muted"></span>
+              <code id="t-link"></code>
+              <div class="gap-row"><button class="btn btn-ghost btn-sm" type="button" id="t-copy">Copy WhatsApp message</button><button class="btn btn-ghost btn-sm" type="button" id="t-again">Open another class</button></div>
+            </div>
+          </div>
+          <div class="card">
+            <h2>Who can enter</h2>
+            <p class="muted">Only Active students of the chosen batches receive the invite. Dropped or paused students are left out automatically.</p>
+            <div class="kpi"><b id="who-count">0</b><span>students will be invited</span></div>
+            <p class="muted" style="margin-top:14px;font-size:14px">A second room for the same batch, subject and time is blocked, so students never get two invites.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-view="attendance">
+        <div class="card">
+          <h2>Class 5 · BV · Afternoon <small>Mathematics · Lecture 18</small></h2>
+          <div class="ptbl-wrap"><table class="ptbl" id="att-table">
+            <thead><tr><th>ID</th><th>Student</th><th>Present</th></tr></thead><tbody></tbody>
+          </table></div>
+          <div class="gap-row" style="margin-top:14px"><button class="btn btn-ghost btn-sm" type="button" id="att-all">Mark all present</button><button class="btn btn-plum btn-sm" type="button" id="att-save">Save attendance</button><span class="muted" id="att-sum"></span></div>
+        </div>
+      </section>
+
+      <section class="view" data-view="marks">
+        <div class="card">
+          <h2>Weekly exam 5 <small>Mathematics · out of 50</small></h2>
+          <div class="ptbl-wrap"><table class="ptbl" id="marks-table">
+            <thead><tr><th>ID</th><th>Student</th><th>Marks</th></tr></thead><tbody></tbody>
+          </table></div>
+          <div class="gap-row" style="margin-top:14px"><button class="btn btn-plum btn-sm" type="button" id="marks-save">Save marks</button><span class="muted" id="marks-sum"></span></div>
+        </div>
+      </section>
+
+      <section class="view" data-view="logs">
+        <div class="card">
+          <h2>Last 14 days</h2>
+          <div class="ptbl-wrap"><table class="ptbl">
+            <thead><tr><th>Date</th><th>Batch</th><th>Subject</th><th>Lecture</th><th>Invited</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>18 Nov</td><td>Class 5 · BV · Aft</td><td>Mathematics</td><td>17</td><td>38</td><td><span class="tag ok">Held</span></td></tr>
+              <tr><td>18 Nov</td><td>Class 6 · EV · Night</td><td>Mathematics</td><td>21</td><td>35</td><td><span class="tag ok">Held</span></td></tr>
+              <tr><td>17 Nov</td><td>Class 6 · BV · Night</td><td>Mathematics</td><td>21</td><td>42</td><td><span class="tag ok">Held</span></td></tr>
+              <tr><td>16 Nov</td><td>Class 5 · EV · Aft</td><td>Mathematics</td><td>16</td><td>31</td><td><span class="tag bad">Cancelled</span></td></tr>
+              <tr><td>15 Nov</td><td>All active + Exam Batch</td><td>Weekly exam</td><td>Exam 4</td><td>240</td><td><span class="tag ok">Held</span></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  /* 12 batches: class x version x shift, as in the QEC Master Database */
+  var B=[], sizes={"4BV-Aft":40,"4EV-Aft":28,"4BV-Night":33,"4EV-Night":22,"5BV-Aft":38,"5EV-Aft":31,"5BV-Night":36,"5EV-Night":24,"6BV-Aft":39,"6EV-Aft":30,"6BV-Night":42,"6EV-Night":35};
+  ["4","5","6"].forEach(function(c){["BV","EV"].forEach(function(v){["Aft","Night"].forEach(function(s){B.push(c+v+"-"+s);});});});
+  function nice(b){var m=b.match(/^(\d)(BV|EV)-(Aft|Night)$/);return "Class "+m[1]+" · "+m[2]+" · "+(m[3]==="Aft"?"Afternoon":"Night");}
+  var list=document.getElementById('batch-list');
+  list.innerHTML=B.map(function(b){return '<label><input type="checkbox" value="'+b+'"'+(b==="5BV-Aft"?" checked":"")+'> '+nice(b)+'</label>';}).join('');
+  function count(){var n=0;list.querySelectorAll('input:checked').forEach(function(i){n+=sizes[i.value]||0;});document.getElementById('who-count').textContent=n;return n;}
+  list.addEventListener('change',function(){count();document.getElementById('b-err').style.display='none';});count();
+  var d=document.getElementById('o-date');
+  try{d.value=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Dhaka'}).format(new Date());}catch(e){d.valueAsDate=new Date();}
+  var opened={};
+  var form=document.getElementById('open-form'), out=document.getElementById('ticket-out');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var picked=[].map.call(list.querySelectorAll('input:checked'),function(i){return i.value;});
+    if(!picked.length){document.getElementById('b-err').style.display='block';list.querySelector('input').focus();return;}
+    var lec=document.getElementById('o-lec').value.replace(/\D/g,'');
+    var subj=document.getElementById('o-subject').value, t=document.getElementById('o-time').value, dt=d.value;
+    if(!dt||!t){qecToast('Choose a date and a start time.');return;}
+    var key=[picked.sort().join('+'),subj,dt,t].join('|');
+    if(opened[key]){qecToast('A room for these batches, subject and time is already open. Use the same link.');out.classList.add('show');out.focus();return;}
+    var code='qec-'+Math.random().toString(36).slice(2,5)+'-'+Math.random().toString(36).slice(2,6)+'-'+Math.random().toString(36).slice(2,5);
+    opened[key]='https://meet.google.com/'+code;
+    document.getElementById('t-sum').textContent=subj+(lec?' · Lecture '+lec:'')+' · '+dt+' '+t+' · '+picked.map(nice).join(', ')+' · '+count()+' students invited';
+    document.getElementById('t-link').textContent=opened[key]+'   (sample link)';
+    out.dataset.msg='QEC Academy: '+subj+(lec?' Lecture '+lec:'')+' starts at '+t+'. Join: '+opened[key];
+    out.classList.add('show');out.focus();
+  });
+  document.getElementById('t-copy').addEventListener('click',function(){
+    var msg=out.dataset.msg||'';
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(msg).then(function(){qecToast('Message copied.');},function(){qecToast(msg);});}
+    else qecToast(msg);
+  });
+  document.getElementById('t-again').addEventListener('click',function(){out.classList.remove('show');form.querySelector('input').focus();});
+
+  /* attendance + marks with sample students */
+  var S=[["50401","Student A"],["50402","Student B"],["50405","Student C"],["50409","Student D"],["50412","Ayaan Rahman"],["50417","Student E"],["50420","Student F"]];
+  var at=document.querySelector('#att-table tbody');
+  at.innerHTML=S.map(function(s,i){return '<tr><td>'+s[0]+'</td><td>'+s[1]+'</td><td><input type="checkbox" aria-label="'+s[1]+' present"'+(i%4!==2?' checked':'')+' style="width:20px;height:20px;accent-color:#5b1462"></td></tr>';}).join('');
+  function attSum(){var all=at.querySelectorAll('input'),p=at.querySelectorAll('input:checked').length;document.getElementById('att-sum').textContent=p+' of '+all.length+' present';}
+  at.addEventListener('change',attSum);attSum();
+  document.getElementById('att-all').addEventListener('click',function(){at.querySelectorAll('input').forEach(function(i){i.checked=true;});attSum();});
+  document.getElementById('att-save').addEventListener('click',function(){qecToast('Attendance saved. In this preview nothing was sent.');});
+  var mt=document.querySelector('#marks-table tbody');
+  mt.innerHTML=S.map(function(s){return '<tr><td>'+s[0]+'</td><td>'+s[1]+'</td><td><input inputmode="decimal" maxlength="4" aria-label="Marks for '+s[1]+'"> <span class="muted">/ 50</span></td></tr>';}).join('');
+  document.getElementById('marks-save').addEventListener('click',function(){
+    var bad=null,filled=0;
+    mt.querySelectorAll('input').forEach(function(i){
+      var v=i.value.trim(); i.style.borderColor='';
+      if(v==='')return;
+      var n=Number(v);
+      if(!/^\d{1,2}(\.5)?$/.test(v)||n<0||n>50){i.style.borderColor='#a3262a';if(!bad)bad=i;}else filled++;
+    });
+    if(bad){bad.focus();document.getElementById('marks-sum').textContent='Marks must be between 0 and 50 (halves allowed).';return;}
+    document.getElementById('marks-sum').textContent=filled+' of '+S.length+' entered.';
+    qecToast(filled?'Marks saved. In this preview nothing was sent.':'Type at least one mark first.');
+  });
+})();
+</script>
+<script src="../assets/js/portal.js" defer></script>
+</body>
+</html>

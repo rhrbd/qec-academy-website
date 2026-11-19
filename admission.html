@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admission | QEC Academy</title>
+<meta name="description" content="Apply to QEC Academy or book a free trial class for Class 4, 5 or 6.">
+<meta name="theme-color" content="#5b1462">
+<meta property="og:title" content="Admission | QEC Academy">
+<meta property="og:description" content="Apply to QEC Academy or book a free trial class for Class 4, 5 or 6.">
+<meta property="og:image" content="assets/img/logo.png">
+<link rel="icon" type="image/png" href="assets/img/mark.png">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+
+</head>
+<body class="site">
+<a class="skip" href="#main">Skip to content</a>
+<div class="preview-bar" role="note">Template preview of the new QEC Academy website. Names, numbers and prices marked <span class="ph-dot" aria-hidden="true"></span> are sample content.</div>
+<header class="topbar" id="top">
+  <div class="wrap topbar-in">
+    <a class="brand" href="index.html" aria-label="QEC Academy home">
+      <img src="assets/img/mark.png" alt="" width="40" height="40">
+      <span class="brand-name">QEC <b>Academy</b></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sitenav">
+      <span class="bars" aria-hidden="true"></span><span class="sr">Menu</span>
+    </button>
+    <nav id="sitenav" class="sitenav" aria-label="Main">
+      <a href="courses.html" data-nav="courses">Courses</a>
+      <a href="skill-hub.html" data-nav="skillhub">Skill Hub</a>
+      <a href="books.html" data-nav="books">Books</a>
+      <a href="medha.html" data-nav="medha">Medha Onneshon</a>
+      <a href="about.html" data-nav="about">About</a>
+      <a href="contact.html" data-nav="contact">Contact</a>
+      <span class="nav-actions">
+        <a class="btn btn-ghost" href="login.html">Log in</a>
+        <a class="btn btn-amber" href="admission.html">Book a free class</a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Home</a> / Admission</p>
+    <h1>Admission</h1>
+    <p class="bn-sub" lang="bn">ভর্তি ও ফ্রি ক্লাস</p>
+    <p class="lead">Apply for a course or book a free trial class. Our admission team calls you within one working day to confirm the batch.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <h2>What happens next</h2>
+      <ol class="steps" style="grid-template-columns:1fr;gap:22px">
+        <li style="padding:0 0 0 62px"><h3>We call you</h3><p>To confirm the class, version and batch time.</p></li>
+        <li style="padding:0 0 0 62px"><h3>Free trial class</h3><p>Your child joins one live class before you pay.</p></li>
+        <li style="padding:0 0 0 62px"><h3>Admission and ID</h3><p>After payment you receive the QEC ID, PIN and books.</p></li>
+      </ol>
+    </div>
+    <div class="form-card">
+      <form id="adm-form" data-validate data-done="adm-done" novalidate>
+        <div class="form-grid">
+          <div class="field full"><label for="f-course">Program <span class="req">*</span></label>
+            <select id="f-course" name="course" required>
+              <option value="">Choose a program</option>
+              <optgroup label="Pre-Cadet">
+                <option value="pc4">Pre-Cadet Foundation, Class 4</option>
+                <option value="pc5">Pre-Cadet Builder, Class 5</option>
+                <option value="pc6">Cadet Admission Ready, Class 6</option>
+                <option value="mt6">Cadet Model Test Series, Class 6</option>
+                <option value="free">Free trial class</option>
+              </optgroup>
+              <optgroup label="Skill Hub">
+                <option value="olympiad">Math Olympiad</option>
+                <option value="grammar">English Grammar</option>
+                <option value="spoken">Spoken English</option>
+                <option value="code">Programming for Kids</option>
+              </optgroup>
+              <optgroup label="Opening 2027">
+                <option value="ssc9">Class 9 (register interest)</option>
+                <option value="ssc10">Class 10 (register interest)</option>
+              </optgroup>
+            </select><div class="err">Choose a program.</div></div>
+          <div class="field"><label for="f-student">Student's name <span class="req">*</span></label><input id="f-student" name="student" required data-rules="name"><div class="err">Write the student's name.</div></div>
+          <div class="field"><label for="f-class">Current class <span class="req">*</span></label><select id="f-class" name="class" required><option value="">Choose</option><option value="3">Class 3</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option><option value="8">Class 8</option><option value="9">Class 9</option></select><div class="err">Choose the current class.</div></div>
+          <div class="field"><label for="f-guardian">Guardian's name <span class="req">*</span></label><input id="f-guardian" name="guardian" required data-rules="name" autocomplete="name"><div class="err">Write the guardian's name.</div></div>
+          <div class="field"><label for="f-phone">Guardian's mobile <span class="req">*</span></label><input id="f-phone" name="phone" required data-rules="phone" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"><div class="err">Use an 11-digit number that starts with 01.</div></div>
+          <div class="field"><label for="f-email">Student's Gmail</label><input id="f-email" name="email" type="email" data-rules="email" autocomplete="email" placeholder="name@gmail.com"><div class="hint">Needed for Google Classroom and live classes.</div><div class="err">Check the email address.</div></div>
+          <div class="field"><label for="f-school">School</label><input id="f-school" name="school"></div>
+          <div class="field full"><label id="ver-label">Version <span class="req">*</span></label>
+            <div class="seg" role="radiogroup" aria-labelledby="ver-label">
+              <label><input type="radio" name="version" value="BV" required> Bangla version</label>
+              <label><input type="radio" name="version" value="EV"> English version</label>
+            </div><div class="err">Choose a version.</div></div>
+          <div class="field full"><label id="shift-label">Preferred batch</label>
+            <div class="seg" role="radiogroup" aria-labelledby="shift-label">
+              <label><input type="radio" name="shift" value="Afternoon" checked> Afternoon</label>
+              <label><input type="radio" name="shift" value="Night"> Night</label>
+              <label><input type="radio" name="shift" value="Offline"> At the centre</label>
+            </div></div>
+        </div>
+        <button class="btn btn-amber" type="submit" style="margin-top:20px;width:100%">Send application</button>
+        <p class="form-note">Template preview: this form checks your details but does not send them yet. Later it will create a lead in the sales desk automatically.</p>
+      </form>
+      <div class="form-done" id="adm-done" role="status">
+        <div class="big"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0f7a49" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3>Application sent</h3>
+        <p class="muted">The admission team will call the guardian's number. In this preview nothing was sent.</p>
+        <button class="btn btn-ghost btn-sm" type="button" data-reset-form="adm-form">Send another</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/logo.png" alt="QEC Academy — শেখার ভিত্তি হোক এখানেই" width="204" height="113" class="footer-logo">
+      <p>Quarantine Education Care. Pre-cadet and academic coaching for Class 4 to 6, online and offline.</p>
+    </div>
+    <div>
+      <h2 class="fh">Learn</h2>
+      <ul>
+        <li><a href="courses.html">All courses</a></li>
+        <li><a href="skill-hub.html">Skill Hub</a></li>
+        <li><a href="books.html">QEC Mastering books</a></li>
+        <li><a href="medha.html">Medha Onneshon 2026</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="fh">Academy</h2>
+      <ul>
+        <li><a href="about.html">About QEC</a></li>
+        <li><a href="about.html#teachers">Teachers</a></li>
+        <li><a href="admission.html">Admission</a></li>
+        <li><a href="roadmap.html">Platform roadmap</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="fh">Portals</h2>
+      <ul>
+        <li><a href="portal/student.html">Student dashboard</a></li>
+        <li><a href="portal/teacher.html">Teacher portal</a></li>
+        <li><a href="portal/sales.html">Sales desk</a></li>
+        <li><a href="portal/admin.html">Admin console</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="fh">Talk to us</h2>
+      <ul class="contact-list">
+        <li><a href="tel:+8801841233235">01841-233235</a></li>
+        <li><a href="https://wa.me/8801841233235" rel="noopener" target="_blank">WhatsApp helpline</a></li>
+        <li><a href="https://www.facebook.com/QECed/" rel="noopener" target="_blank">Facebook: QECed</a></li>
+        <li><a href="mailto:programs@quarantineeducationcare.org">programs@quarantineeducationcare.org</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© 2026 QEC Academy. All rights reserved.</span>
+    <span><a href="contact.html#policies">Privacy</a> <a href="contact.html#policies">Terms</a> <a href="contact.html#policies">Refund policy</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
