@@ -506,3 +506,75 @@ details.faq p{margin:10px 0 0;color:var(--ink-2)}
   .draw path{stroke-dashoffset:0}
   .note{opacity:1}
 }
+
+/* =====================================================================
+   v2.1 polish
+   ===================================================================== */
+/* opening curtain: home page, once per visit */
+.intro{display:none}
+.js .intro.play{display:grid;place-items:center;position:fixed;inset:0;z-index:200;background:radial-gradient(800px 500px at 50% 40%,#5b1462,#170319);animation:introOut .7s var(--ease) 1.5s forwards}
+.intro-in{display:flex;flex-direction:column;align-items:center;gap:16px;color:var(--amber-300);font:700 clamp(20px,3vw,28px)/1.2 var(--f-display)}
+.intro-in img{width:96px;height:96px;animation:introMark 1.2s var(--ease) both;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45))}
+.intro-in span{opacity:0;animation:fadeUp .7s var(--ease) .45s forwards}
+@keyframes introMark{0%{transform:scale(.4) rotate(-25deg);opacity:0}60%{transform:scale(1.08) rotate(4deg);opacity:1}100%{transform:none}}
+@keyframes introOut{to{clip-path:inset(0 0 100% 0);visibility:hidden}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* sparkles in the hero */
+.sparkles{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.sparkles i{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffd27a;box-shadow:0 0 10px 2px rgba(255,210,122,.7);opacity:0;animation:twinkle 4s ease-in-out infinite}
+.sparkles i:nth-child(1){left:8%;top:18%;animation-delay:.2s}.sparkles i:nth-child(2){left:22%;top:72%;animation-delay:1.4s}
+.sparkles i:nth-child(3){left:41%;top:12%;animation-delay:2.2s}.sparkles i:nth-child(4){left:55%;top:84%;animation-delay:.8s}
+.sparkles i:nth-child(5){left:63%;top:26%;animation-delay:3s}.sparkles i:nth-child(6){left:78%;top:10%;animation-delay:1.9s}
+.sparkles i:nth-child(7){left:90%;top:48%;animation-delay:2.6s}.sparkles i:nth-child(8){left:34%;top:44%;animation-delay:3.4s;width:3px;height:3px}
+.sparkles i:nth-child(9){left:70%;top:62%;animation-delay:.5s;width:3px;height:3px}.sparkles i:nth-child(10){left:14%;top:46%;animation-delay:2.9s;width:3px;height:3px}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1)}}
+
+/* wave dividers */
+.wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(36px,5vw,80px);display:block;z-index:1}
+.wave-top{top:-1px;bottom:auto}
+.section-dark{padding-top:clamp(90px,11vw,150px)}
+
+/* events */
+.events{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.event{position:relative;display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--r-l);padding:20px;box-shadow:var(--sh-1);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
+.event:hover{transform:translateY(-5px);box-shadow:var(--sh-2)}
+.event::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--ev,var(--plum))}
+.ev-amber{--ev:var(--amber)}.ev-plum{--ev:var(--plum)}.ev-teal{--ev:#1f7a6b}
+.ev-date{flex:none;width:70px;height:78px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,#2a0730,#5b1462);color:#fff;box-shadow:0 12px 24px -14px rgba(42,7,48,.9)}
+.ev-amber .ev-date{background:linear-gradient(160deg,#ffc864,#e08a12);color:var(--plum-900)}
+.ev-teal .ev-date{background:linear-gradient(160deg,#2fa48d,#0f4c45)}
+.ev-date b{font:800 28px/1 var(--f-display)}.ev-date span{font-size:12.5px;font-weight:600;opacity:.9}
+.ev-body h3{font-size:20px;margin:10px 0 6px}
+.ev-body p{font-size:15px;color:var(--mut);margin:0 0 14px}
+.ev-link{font-weight:600;text-decoration:none;font-size:15px}
+@media (max-width:980px){.events{grid-template-columns:1fr}}
+
+/* scroll progress + floating actions */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:left;transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--amber),#ffd27a,var(--plum));z-index:60;pointer-events:none}
+.fab{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.fab a,.fab button{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:0;cursor:pointer;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);transition:transform .25s var(--ease),opacity .25s}
+.fab a:hover,.fab button:hover{transform:translateY(-3px) scale(1.04)}
+.fab .wa{background:#25d366;animation:waPulse 2.8s ease-in-out infinite}
+.fab .wa svg{width:28px;height:28px}
+@keyframes waPulse{0%,100%{box-shadow:0 14px 30px -12px rgba(0,0,0,.45),0 0 0 0 rgba(37,211,102,.5)}50%{box-shadow:0 14px 30px -12px rgba(0,0,0,.45),0 0 0 12px rgba(37,211,102,0)}}
+.fab .top{background:#fff;color:var(--plum);opacity:0;pointer-events:none;transform:translateY(10px)}
+.fab .top.on{opacity:1;pointer-events:auto;transform:none}
+.fab .top svg{width:22px;height:22px}
+
+/* animated border for the featured card */
+.ccard.featured{border:0;padding:2px;background:conic-gradient(from var(--ang,0deg),#f3ae3c,#8a3f93,#5b1462,#ffd27a,#f3ae3c);animation:spinBorder 6s linear infinite}
+.ccard.featured>.cbody,.ccard.featured>.cfoot{background:#fff}
+.ccard.featured .poster{border-radius:calc(var(--r-l) - 2px) calc(var(--r-l) - 2px) 0 0}
+.ccard.featured .cfoot{border-radius:0 0 calc(var(--r-l) - 2px) calc(var(--r-l) - 2px)}
+@property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes spinBorder{to{--ang:360deg}}
+
+/* inner page hero decoration */
+.page-hero::after{content:"";position:absolute;right:-60px;bottom:-60px;width:260px;height:260px;background:url("../img/mark180.png") center/contain no-repeat;opacity:.07;transform:rotate(-12deg);pointer-events:none}
+
+@media (prefers-reduced-motion:reduce){
+  .js .intro.play{display:none}
+  .sparkles,.progress{display:none}
+  .ccard.featured{animation:none}
+}

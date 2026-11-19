@@ -41,7 +41,7 @@ APPS = {
     "sales":   {"host": "sales.qecacademy.com",   "private": True,  "name": "QEC Sales Desk",       "manifest": False},
     "office":  {"host": "office.qecacademy.com",  "private": True,  "name": "QEC Office Console",   "manifest": False},
 }
-NAV_KEYS = ["", "home", "courses", "skillhub", "books", "medha", "about", "contact", "account"]
+NAV_KEYS = ["", "home", "courses", "skillhub", "books", "events", "about", "contact", "account"]
 META_RE = re.compile(r"^\s*<!--meta(.*?)-->", re.S)
 ATTR_RE = re.compile(r'(\w+)="(.*?)"', re.S)
 INCLUDE_RE = re.compile(r"<!--#include ([\w.-]+)-->")

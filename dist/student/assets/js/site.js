@@ -23,6 +23,26 @@
     if (i) i.textContent = a.name.split(/\s+/).map(function (w) { return w.charAt(0); }).join("").slice(0, 2).toUpperCase();
   });
 
+  /* ---------- opening curtain (home, once per visit) ---------- */
+  var intro = document.querySelector(".intro");
+  if (intro) {
+    var seen = QEC.session.get("qec.intro");
+    if (!seen && !reduce) {
+      intro.classList.add("play"); QEC.session.set("qec.intro", "1");
+      setTimeout(function () { intro.remove(); }, 2400);
+    } else intro.remove();
+  }
+
+  /* ---------- scroll progress + back to top ---------- */
+  var prog = document.querySelector(".progress"), topBtn = document.querySelector(".fab .top");
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - window.innerHeight, y = window.scrollY;
+    if (prog) prog.style.setProperty("--p", h > 0 ? Math.min(1, y / h).toFixed(4) : 0);
+    if (topBtn) topBtn.classList.toggle("on", y > 600);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  if (topBtn) topBtn.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); var m = document.getElementById("main"); if (m) { m.setAttribute("tabindex", "-1"); m.focus({ preventScroll: true }); } });
+
   /* ---------- course card ---------- */
   var ICON = {
     clock: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
@@ -40,7 +60,7 @@
     opts = opts || {};
     var num = c.cls === "4-6" ? "4–6" : c.cls;
     var hot = c.badge === "Most Popular" || c.badge === "Free" || c.badge === "New";
-    return '<article class="ccard" data-tilt>' +
+    return '<article class="ccard' + (c.badge === "Most Popular" ? " featured" : "") + '" data-tilt>' +
       '<a class="poster t-' + esc(c.theme) + '" href="course.html?id=' + esc(c.id) + '" aria-label="' + esc(c.title) + ' details">' +
         '<span class="badge' + (hot ? " hot" : "") + '">' + esc(c.badge) + "</span>" +
         '<span><span class="trk">' + esc(c.track === "Skill Hub" ? "Skill Hub · Class 4–6" : (c.cls === "4-6" ? "Class 4–6" : "Class " + c.cls)) + '</span><br><span class="ttl">' + esc(c.short) + "</span></span>" +
